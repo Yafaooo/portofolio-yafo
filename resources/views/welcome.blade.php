@@ -100,7 +100,7 @@
                 <div class="grid md:grid-cols-3 gap-8 border-t border-white/5 pt-12">
                     <div class="text-slate-500 font-mono text-sm tracking-widest italic" data-aos="fade-right">Implementation</div>
                     <div class="md:col-span-2">
-                        <h4 class="text-2xl font-bold text-white mb-8 uppercase tracking-tighter" data-aos="fade-left">Sistem Informasi Pengolahan Data</h4>
+                        <h4 class="text-2xl font-bold text-white mb-8 uppercase tracking-tighter" data-aos="fade-left">Sistem Informasi Pengolahan Data & UI/UX Designer</h4>
                         
                         <div class="grid md:grid-cols-2 gap-8">
                             <div data-aos="flip-left" class="bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
