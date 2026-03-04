@@ -211,26 +211,31 @@
             </div>
         </button>
         <audio id="bgMusic" loop>
-    <source src="https://www.chosic.com/wp-content/uploads/2021/07/The-Neon-Lights.mp3" type="audio/mpeg">
-</audio>
+            <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 
-<script>
-    function toggleMusic() {
-        const music = document.getElementById('bgMusic');
-        const btn = document.getElementById('musicBtn');
-        
-        if (music.paused) {
-            // Kita coba play dan tangkap jika ada error
-            music.play().then(() => {
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi Animasi
+        AOS.init({ 
+            duration: 1000, 
+            once: false,
+            mirror: true
+        });
+
+        // Fungsi Musik
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicBtn');
+            if (music.paused) {
+                music.play();
                 btn.classList.add('animate-pulse', 'bg-indigo-600/50');
-            }).catch(error => {
-                console.log("Browser memblokir musik, coba klik halaman dulu baru tekan tombol.");
-            });
-        } else {
-            music.pause();
-            btn.classList.remove('animate-pulse', 'bg-indigo-600/50');
+            } else {
+                music.pause();
+                btn.classList.remove('animate-pulse', 'bg-indigo-600/50');
+            }
         }
-    }
-</script>
+    </script>
 </body>
 </html>
