@@ -44,7 +44,7 @@
 <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 <div class="order-2 md:order-1">
 <div class="inline-block px-3 py-1 border border-indigo-500/30 rounded-full bg-indigo-500/5 text-indigo-400 text-[10px] font-bold tracking-widest uppercase mb-6">
-S1 Rekayasa Perangkat Lunak
+S1 Software Engineering
 </div>
 <h1 class="text-6xl md:text-8xl font-extrabold text-white mb-8 tracking-tighter leading-none">
 Yafao Mabe <br> <span class="text-indigo-600">Lamboe.</span>
