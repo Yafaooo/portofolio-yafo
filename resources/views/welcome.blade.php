@@ -4,6 +4,8 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Yafao Mabe Lamboe, S.Kom | Software Engineer</title>
+ <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
  <script src="https://cdn.tailwindcss.com"></script>
  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
  <style>
@@ -215,6 +217,33 @@ Mentransformasi logika kompleks menjadi sistem yang elegan. Spesialisasi dalam p
  </div>
  <p class="text-[9px] text-slate-700 uppercase tracking-[0.8em]">Built for 2026 &bull; Yafao Mabe Lamboe, S.Kom</p>
  </footer>
+<div class="fixed bottom-6 right-6 z-50">
+    <button onclick="toggleMusic()" id="musicBtn" class="bg-indigo-600/20 backdrop-blur-md border border-white/10 p-4 rounded-full hover:bg-indigo-500 transition-all group shadow-2xl">
+        <div id="musicIcon" class="text-white group-hover:scale-110 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+            </svg>
+        </div>
+    </button>
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
+    </audio>
+</div>
 
+<script>
+    AOS.init({ duration: 1000, once: true });
+
+    function toggleMusic() {
+        const music = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
+        if (music.paused) {
+            music.play();
+            btn.classList.add('animate-pulse', 'bg-indigo-600/50');
+        } else {
+            music.pause();
+            btn.classList.remove('animate-pulse', 'bg-indigo-600/50');
+        }
+    }
+</script>
 </body>
 </html>
