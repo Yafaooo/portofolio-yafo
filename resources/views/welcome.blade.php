@@ -15,6 +15,8 @@
             background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
             filter: blur(60px); z-index: -1;
         }
+        /* Menghaluskan kursor Typed.js */
+        .typed-cursor { color: #4f46e5; font-size: 1.2em; }
     </style>
 </head>
 <body class="bg-[#050810] text-slate-300 bg-grid relative overflow-x-hidden">
@@ -105,23 +107,20 @@
                 <div class="grid md:grid-cols-3 gap-8 border-t border-white/5 pt-12">
                     <div class="text-slate-500 font-mono text-sm tracking-widest italic" data-aos="fade-right">Implementation</div>
                     <div class="md:col-span-2">
-                        <h4 class="text-2xl font-bold text-white mb-8 uppercase tracking-tighter" data-aos="fade-left">Sistem Informasi Pengolahan Data & UI/UX Designer</h4>
+                        <h4 class="text-2xl font-bold text-white mb-8 uppercase tracking-tighter" data-aos="fade-left">Sistem Informasi & UI/UX Design</h4>
                         
-                        <div class="grid md:grid-cols-2 gap-8">
+                        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
                             <div data-aos="flip-left" class="bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
                                 <div class="mb-5 overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
                                     <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                                        <span class="text-white text-[10px] font-bold tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">VIEW INTERFACE</span>
+                                        <span class="text-white text-[10px] font-bold tracking-widest">VIEW INTERFACE</span>
                                     </div>
                                     <img src="{{ asset('images/screenshot-siakad.png') }}" alt="SIAKAD" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-60 group-hover:opacity-100">
                                 </div>
-                                <h5 class="text-white font-bold mb-3 group-hover:text-indigo-400 text-lg tracking-tight">SIAKAD (Akademik)</h5>
-                                <p class="text-[11px] text-slate-400 mb-6 leading-relaxed">Sistem informasi akademik terpadu untuk efisiensi administrasi sekolah.</p>
+                                <h5 class="text-white font-bold mb-3 group-hover:text-indigo-400 text-lg">SIAKAD (Akademik)</h5>
+                                <p class="text-[11px] text-slate-400 mb-6">Sistem informasi akademik terpadu untuk efisiensi administrasi sekolah.</p>
                                 <div class="flex items-center justify-between mt-auto">
-                                    <a href="https://alamat-web-sekolah-anda.com" target="_blank" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 flex items-center gap-2 uppercase tracking-widest">
-                                        <span>Live Demo</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                    </a>
+                                    <a href="#" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold uppercase tracking-widest">Live Demo</a>
                                     <span class="text-[9px] font-mono text-indigo-500 bg-indigo-500/10 px-2 py-1 rounded">LARAVEL 12</span>
                                 </div>
                             </div>
@@ -129,47 +128,38 @@
                             <div data-aos="flip-right" data-aos-delay="200" class="bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
                                 <div class="mb-5 overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
                                     <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                                        <span class="text-white text-[10px] font-bold tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">VIEW INTERFACE</span>
+                                        <span class="text-white text-[10px] font-bold tracking-widest">VIEW INTERFACE</span>
                                     </div>
                                     <img src="{{ asset('images/screenshot-gereja.png') }}" alt="Database Gereja" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-60 group-hover:opacity-100">
                                 </div>
-                                <h5 class="text-white font-bold mb-3 group-hover:text-indigo-400 text-lg tracking-tight">Database Jemaat</h5>
-                                <p class="text-[11px] text-slate-400 mb-6 leading-relaxed">Sistem manajemen data jemaat dengan enkripsi data dan akurasi tinggi.</p>
+                                <h5 class="text-white font-bold mb-3 group-hover:text-indigo-400 text-lg">Database Jemaat</h5>
+                                <p class="text-[11px] text-slate-400 mb-6">Sistem manajemen data jemaat dengan enkripsi data dan akurasi tinggi.</p>
                                 <div class="flex items-center justify-between mt-auto">
-                                    <a href="https://alamat-web-gereja-anda.com" target="_blank" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 flex items-center gap-2 uppercase tracking-widest">
-                                        <span>Live Demo</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                    </a>
+                                    <a href="#" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold uppercase tracking-widest">Live Demo</a>
                                     <span class="text-[9px] font-mono text-indigo-500 bg-indigo-500/10 px-2 py-1 rounded">SQL OPTIMIZED</span>
                                 </div>
-                                <div data-aos="flip-up" data-aos-delay="400" class="bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
- <div class="mb-5 overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
- <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
- <span class="text-white text-[10px] font-bold tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">OPEN FIGMA DESIGN</span>
- </div>
- <img src="{{ asset('images/resort-design.png') }}" alt="UI/UX Resort Destination" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-60 group-hover:opacity-100">
- </div>
+                            </div>
 
- <div class="flex justify-between items-start mb-3">
- <h5 class="text-white font-bold group-hover:text-indigo-400 text-lg tracking-tight">Resort Destination Mobile App</h5>
- <span class="text-[8px] px-2 py-1 bg-pink-500/20 text-pink-400 rounded-full font-bold uppercase tracking-widest">UI/UX Design</span>
- </div>
- 
- <p class="text-[11px] text-slate-400 mb-6 leading-relaxed">
- Perancangan antarmuka aplikasi booking resort mewah dengan pendekatan <span class="text-white font-bold">User-Centered Design</span>. Fokus pada kemudahan navigasi dan visual yang imersif bagi wisatawan.
- </p>
- 
- <div class="flex items-center justify-between mt-auto">
- <div class="flex items-center gap-4">
- <a href="https://www.figma.com/design/VYlEmarX6d5ZWA63EuAlZU/UX-Challenge---Mobile-Datatable---YAFAO?node-id=1-542&t=YNgZHhD1JQDbM42k-1" target="_blank" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 flex items-center gap-2 uppercase tracking-widest">
- <span>View Project</span>
- <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
- </a>
- </div>
- <div class="flex gap-2">
- <span class="text-[9px] font-mono text-slate-500">FIGMA</span>
- <span class="text-[9px] font-mono text-slate-500">PROTOTYPING</span>
- </div>
+                            <div data-aos="fade-up" data-aos-delay="400" class="lg:col-span-2 bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
+                                <div class="grid md:grid-cols-2 gap-8 items-center">
+                                    <div class="overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
+                                        <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                                            <span class="text-white text-[10px] font-bold tracking-widest">OPEN FIGMA</span>
+                                        </div>
+                                        <img src="{{ asset('images/resort-design.png') }}" alt="UI/UX Resort" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition">
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between items-start mb-3">
+                                            <h5 class="text-white font-bold group-hover:text-indigo-400 text-lg uppercase">Resort Destination App</h5>
+                                            <span class="text-[8px] px-2 py-1 bg-pink-500/20 text-pink-400 rounded-full font-bold uppercase">UI/UX Design</span>
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 mb-6">Perancangan antarmuka aplikasi booking resort mewah dengan pendekatan User-Centered Design.</p>
+                                        <a href="https://www.figma.com/design/VYlEmarX6d5ZWA63EuAlZU/UX-Challenge---Mobile-Datatable---YAFAO?node-id=1-542&t=YNgZHhD1JQDbM42k-1" target="_blank" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold inline-flex items-center gap-2 uppercase tracking-widest">
+                                            <span>View Project</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -252,16 +242,16 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     
     <script>
-        // 1. Inisialisasi AOS (Animasi Scroll Bawaan)
+        // AOS
         AOS.init({ 
             duration: 1000, 
             once: false,
             mirror: true
         });
 
-        // 2. Inisialisasi Typed.js (Animasi Mengetik Baru)
+        // Typed.js
         var typed = new Typed('#typing-text', {
-            strings: ['Developer', 'Teacher', 'Creator'],
+            strings: ['Software Engineer', 'IT Educator', 'UI/UX Enthusiast'],
             typeSpeed: 60,
             backSpeed: 40,
             backDelay: 2000,
@@ -269,7 +259,7 @@
             cursorChar: '_'
         });
 
-        // 3. Fungsi Musik (Bawaan)
+        // Music Toggle
         function toggleMusic() {
             const music = document.getElementById('bgMusic');
             const btn = document.getElementById('musicBtn');
