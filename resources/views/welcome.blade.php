@@ -24,7 +24,7 @@
     <div class="aurora bottom-[20%] right-[-100px] bg-indigo-900/10"></div>
 
     <a href="https://wa.me/6282272463816" target="_blank" class="fixed bottom-8 left-8 z-[60] bg-indigo-600 hover:bg-indigo-500 text-white p-4 rounded-full shadow-lg shadow-indigo-500/20 transition-all hover:scale-110 active:scale-95 group">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.887-11.888 3.174 0 6.16 1.236 3.484 2.247 2.248 3.481 5.231 3.481 8.401 0 6.556-5.331 11.888-11.887 11.888-2.01 0-3.987-.506-5.741-1.465l-6.249 1.689zm5.989-4.759c1.636.973 3.239 1.417 4.881 1.417 5.469 0 9.918-4.448 9.918-9.917 0-2.657-1.035-5.151-2.914-7.03-1.876-1.877-4.372-2.913-7.004-2.913-5.469 0-9.918 4.45-9.918 9.917 0 1.838.513 3.635 1.485 5.189l-.955 3.486 3.507-.949zm8.502-12.191c-.244-.543-.499-.554-.73-.564-.189-.008-.405-.008-.621-.008-.216 0-.568.082-.865.407-.298.324-1.137 1.111-1.137 2.71 0 1.598 1.163 3.141 1.325 3.358.163.216 2.287 3.493 5.542 4.894.774.333 1.379.531 1.85.682.776.246 1.484.212 2.043.129.622-.094 1.913-.781 2.183-1.536.271-.754.271-1.401.19-1.536-.082-.135-.298-.216-.622-.38s-1.913-.943-2.21-.1.051-1.163-.163-1.325-.216-.622-.379-.325z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.887-11.888 3.174 0 6.16 1.236 8.41 3.484 2.247 2.248 3.481 5.231 3.481 8.401 0 6.556-5.331 11.888-11.887 11.888-2.01 0-3.987-.506-5.741-1.465l-6.249 1.689zm5.989-4.759c1.636.973 3.239 1.417 4.881 1.417 5.469 0 9.918-4.448 9.918-9.917 0-2.657-1.035-5.151-2.914-7.03-1.876-1.877-4.372-2.913-7.004-2.913-5.469 0-9.918 4.45-9.918 9.917 0 1.838.513 3.635 1.485 5.189l-.955 3.486 3.507-.949zm8.502-12.191c-.244-.543-.499-.554-.73-.564-.189-.008-.405-.008-.621-.008-.216 0-.568.082-.865.407-.298.324-1.137 1.111-1.137 2.71 0 1.598 1.163 3.141 1.325 3.358.163.216 2.287 3.493 5.542 4.894.774.333 1.379.531 1.85.682.776.246 1.484.212 2.043.129.622-.094 1.913-.781 2.183-1.536.271-.754.271-1.401.19-1.536-.082-.135-.298-.216-.622-.38s-1.913-.943-2.21-.1.051-1.163-.163-1.325-.216-.622-.379-.325z"/></svg>
         <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-widest uppercase">Chat Yafao</span>
     </a>
 
@@ -74,7 +74,7 @@
                 <div class="relative group">
                     <div class="absolute -inset-4 bg-indigo-600/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
                     <div class="relative w-72 h-72 md:w-96 md:h-96 overflow-hidden rounded-full border-2 border-indigo-500/30 p-2 bg-[#050810]">
-                        <img src="https://ui-avatars.com/api/?name=Yafao+Mabe&background=4f46e5&color=fff&size=512" alt="Yafao Mabe Lamboe" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition duration-700 scale-110 hover:scale-100">
+                        <img src="{{ asset('images/fotosaya.jpeg') }}" alt="Yafao Mabe Lamboe" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition duration-700 scale-110 hover:scale-100">
                     </div>
                 </div>
             </div>
@@ -97,6 +97,67 @@
                         <p class="text-slate-400 leading-relaxed mb-6">
                             Mendidik siswa dalam bidang Rekayasa Perangkat Lunak, fokus pada logika pemrograman dan pengembangan solusi digital untuk kebutuhan internal sekolah.
                         </p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 border-t border-white/5 pt-12">
+                    <div class="text-slate-500 font-mono text-sm tracking-widest italic" data-aos="fade-right">Implementation</div>
+                    <div class="md:col-span-2">
+                        <h4 class="text-2xl font-bold text-white mb-8 uppercase tracking-tighter" data-aos="fade-left">Sistem Informasi & UI/UX Design</h4>
+                        
+                        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div data-aos="flip-left" class="bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
+                                <div class="mb-5 overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
+                                    <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                                        <span class="text-white text-[10px] font-bold tracking-widest">VIEW INTERFACE</span>
+                                    </div>
+                                    <img src="{{ asset('images/screenshot-siakad.png') }}" alt="SIAKAD" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-60 group-hover:opacity-100">
+                                </div>
+                                <h5 class="text-white font-bold mb-3 group-hover:text-indigo-400 text-lg">SIAKAD (Akademik)</h5>
+                                <p class="text-[11px] text-slate-400 mb-6">Sistem informasi akademik terpadu untuk efisiensi administrasi sekolah.</p>
+                                <div class="flex items-center justify-between mt-auto">
+                                    <a href="#" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold uppercase tracking-widest">Live Demo</a>
+                                    <span class="text-[9px] font-mono text-indigo-500 bg-indigo-500/10 px-2 py-1 rounded">LARAVEL 12</span>
+                                </div>
+                            </div>
+
+                            <div data-aos="flip-right" data-aos-delay="200" class="bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
+                                <div class="mb-5 overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
+                                    <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                                        <span class="text-white text-[10px] font-bold tracking-widest">VIEW INTERFACE</span>
+                                    </div>
+                                    <img src="{{ asset('images/screenshot-gereja.png') }}" alt="Database Gereja" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-60 group-hover:opacity-100">
+                                </div>
+                                <h5 class="text-white font-bold mb-3 group-hover:text-indigo-400 text-lg">Database Jemaat</h5>
+                                <p class="text-[11px] text-slate-400 mb-6">Sistem manajemen data jemaat dengan enkripsi data dan akurasi tinggi.</p>
+                                <div class="flex items-center justify-between mt-auto">
+                                    <a href="#" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold uppercase tracking-widest">Live Demo</a>
+                                    <span class="text-[9px] font-mono text-indigo-500 bg-indigo-500/10 px-2 py-1 rounded">SQL OPTIMIZED</span>
+                                </div>
+                            </div>
+
+                            <div data-aos="fade-up" data-aos-delay="400" class="lg:col-span-2 bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
+                                <div class="grid md:grid-cols-2 gap-8 items-center">
+                                    <div class="overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
+                                        <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                                            <span class="text-white text-[10px] font-bold tracking-widest">OPEN FIGMA</span>
+                                        </div>
+                                        <img src="{{ asset('images/resort-design.png') }}" alt="UI/UX Resort" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition">
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between items-start mb-3">
+                                            <h5 class="text-white font-bold group-hover:text-indigo-400 text-lg uppercase">Resort Destination App</h5>
+                                            <span class="text-[8px] px-2 py-1 bg-pink-500/20 text-pink-400 rounded-full font-bold uppercase">UI/UX Design</span>
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 mb-6">Perancangan antarmuka aplikasi booking resort mewah dengan pendekatan User-Centered Design.</p>
+                                        <a href="https://www.figma.com/design/VYlEmarX6d5ZWA63EuAlZU/UX-Challenge---Mobile-Datatable---YAFAO?node-id=1-542&t=YNgZHhD1JQDbM42k-1" target="_blank" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold inline-flex items-center gap-2 uppercase tracking-widest">
+                                            <span>View Project</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -122,7 +183,7 @@
                         </div>
                         <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter">Secure E-Voting <span class="text-indigo-500">v2.0</span></h4>
                         <p class="text-sm text-slate-400 leading-relaxed mb-8 flex-grow">
-                            Sistem pemungutan suara digital terenkripsi menggunakan algoritma <span class="text-white font-mono">SHA-256</span>. Dibangun untuk integritas data tinggi dengan UI Glassmorphism modern.
+                            Sistem pemungutan suara digital terenkripsi menggunakan algoritma <span class="text-white font-mono">SHA-256</span>. Dibangun untuk integritas data tinggi dengan UI Glassmorphism yang modern.
                         </p>
                         <div class="flex flex-wrap gap-3 mb-8 text-[8px] font-bold text-slate-500 uppercase tracking-widest">
                             <span class="border border-white/10 px-2 py-1 rounded">Laravel 12</span>
@@ -131,6 +192,9 @@
                         </div>
                         <div class="flex items-center gap-6">
                             <a href="https://evoting-secure-production.up.railway.app" target="_blank" class="text-xs font-black text-white bg-indigo-600 px-6 py-3 rounded-xl hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 tracking-widest">VIEW LIVE →</a>
+                            <a href="https://github.com/Yafaooo" target="_blank" class="text-slate-500 hover:text-white transition group">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -155,9 +219,6 @@
                         </div>
                         <div class="flex items-center gap-6">
                             <a href="https://lumina-pos-production.up.railway.app" target="_blank" class="text-xs font-black text-white bg-emerald-600 px-6 py-3 rounded-xl hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 tracking-widest">OPEN SYSTEM →</a>
-                            <a href="https://github.com/Yafaooo/lumina-pos" target="_blank" class="text-slate-500 hover:text-white transition group">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
                         </div>
                     </div>
                 </div>
