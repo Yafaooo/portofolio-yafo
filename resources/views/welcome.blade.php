@@ -163,68 +163,6 @@
             </div>
         </div>
     </section>
-
-    <section id="work" class="py-32 px-8 bg-slate-900/20 border-y border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex items-center gap-4 mb-16" data-aos="fade-right">
-                <h3 class="text-indigo-500 font-mono text-xs uppercase tracking-[0.5em]">// Recent Deployments</h3>
-                <div class="h-[1px] flex-grow bg-white/5"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div data-aos="fade-up" class="group relative p-1 rounded-3xl bg-gradient-to-b from-indigo-500/20 to-transparent hover:from-indigo-500/60 transition-all duration-500">
-                    <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-indigo-500/20">Live on Railway</span>
-                            <div class="flex gap-2">
-                                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                <span class="text-[9px] text-slate-500 font-bold uppercase">Secured</span>
-                            </div>
-                        </div>
-                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter">Secure E-Voting <span class="text-indigo-500">v2.0</span></h4>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-8 flex-grow">
-                            Sistem pemungutan suara digital terenkripsi menggunakan algoritma <span class="text-white font-mono">SHA-256</span>. Dibangun untuk integritas data tinggi dengan UI Glassmorphism yang modern.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mb-8 text-[8px] font-bold text-slate-500 uppercase tracking-widest">
-                            <span class="border border-white/10 px-2 py-1 rounded">Laravel 12</span>
-                            <span class="border border-white/10 px-2 py-1 rounded">Tailwind</span>
-                            <span class="border border-white/10 px-2 py-1 rounded">SHA-256</span>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <a href="https://evoting-secure-production.up.railway.app" target="_blank" class="text-xs font-black text-white bg-indigo-600 px-6 py-3 rounded-xl hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 tracking-widest">VIEW LIVE →</a>
-                            <a href="https://github.com/Yafaooo" target="_blank" class="text-slate-500 hover:text-white transition group">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div data-aos="fade-up" data-aos-delay="200" class="group relative p-1 rounded-3xl bg-gradient-to-b from-emerald-500/20 to-transparent hover:from-emerald-500/60 transition-all duration-500">
-                    <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-emerald-500/20">Active on Railway</span>
-                            <div class="flex gap-2">
-                                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></div>
-                                <span class="text-[9px] text-slate-500 font-bold uppercase">Live Data</span>
-                            </div>
-                        </div>
-                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter">YAFAO<span class="text-emerald-500">.POS</span> Elite</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-8 flex-grow">
-                            Sistem Point of Sales (Kasir) modern dengan arsitektur <span class="text-white font-mono">Laravel 12</span>. Menampilkan manajemen inventory real-time dan sistem transaksi instan dengan UI bertema Dark-Premium.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mb-8 text-[8px] font-bold text-slate-500 uppercase tracking-widest">
-                            <span class="border border-white/10 px-2 py-1 rounded">Laravel 12</span>
-                            <span class="border border-white/10 px-2 py-1 rounded">Tailwind CSS</span>
-                            <span class="border border-white/10 px-2 py-1 rounded">High Availability</span>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <a href="https://lumina-pos-production.up.railway.app" target="_blank" class="text-xs font-black text-white bg-emerald-600 px-6 py-3 rounded-xl hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 tracking-widest">OPEN SYSTEM →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 <section id="work" class="py-32 px-8 bg-slate-900/20 border-y border-white/5">
     <div class="max-w-6xl mx-auto">
         <div class="flex items-center gap-4 mb-16" data-aos="fade-right">
