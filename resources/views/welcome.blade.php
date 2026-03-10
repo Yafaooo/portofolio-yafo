@@ -175,26 +175,18 @@
             <div data-aos="fade-up" class="group relative p-1 rounded-3xl bg-gradient-to-b from-blue-500/20 to-transparent hover:from-blue-600/60 transition-all duration-500">
                 <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
                     <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5 relative">
-                        <div class="absolute inset-0 bg-blue-500/10 animate-pulse"></div>
-                        <img src="{{ asset('images/gemini-ai-preview.png') }}" alt="Gemini API" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" alt="Gemini AI" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="flex justify-between items-start mb-6">
                         <span class="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-blue-500/20">Live on Vercel</span>
-                        <div class="flex gap-2">
-                            <div class="w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
-                        </div>
+                        <div class="w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
                     </div>
                     <h4 class="text-2xl font-black text-white mb-4 italic tracking-tighter uppercase">Gemini<span class="text-blue-500">.Chat-API</span></h4>
                     <p class="text-[11px] text-slate-400 leading-relaxed mb-8 flex-grow">
                         Integrasi Google Gemini AI untuk chatbot cerdas. Menangani request kompleks dengan <span class="text-blue-400 font-mono italic">Natural Language Processing</span> secara real-time.
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-8 text-[8px] font-bold text-slate-500 uppercase tracking-widest">
-                        <span class="border border-white/10 px-2 py-1 rounded">Node.js</span>
-                        <span class="border border-white/10 px-2 py-1 rounded">Vercel</span>
-                        <span class="border border-white/10 px-2 py-1 rounded">Google AI</span>
-                    </div>
                     <div class="flex items-center gap-6">
-                        <a href="https://projectfinal-avpn-ancy.vercel.app/" target="_blank" class="text-[10px] font-black text-white bg-blue-600 px-6 py-3 rounded-xl hover:bg-blue-500 transition shadow-lg shadow-blue-600/20 tracking-widest text-center w-full">TRY API PROMPT →</a>
+                        <a href="https://projectfinal-avpn-ancy.vercel.app/" target="_blank" class="text-[10px] font-black text-white bg-blue-600 px-6 py-3 rounded-xl hover:bg-blue-500 transition shadow-lg shadow-blue-600/20 tracking-widest text-center w-full uppercase">Launch API AI →</a>
                     </div>
                 </div>
             </div>
@@ -202,7 +194,7 @@
             <div data-aos="fade-up" data-aos-delay="200" class="group relative p-1 rounded-3xl bg-gradient-to-b from-emerald-500/20 to-transparent hover:from-emerald-500/60 transition-all duration-500">
                 <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
                     <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5">
-                        <img src="{{ asset('images/lumina-pos-preview.png') }}" alt="Lumina POS" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="Lumina POS" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="flex justify-between items-start mb-6">
                         <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-emerald-500/20">Railway Deploy</span>
@@ -211,12 +203,8 @@
                     <p class="text-[11px] text-slate-400 leading-relaxed mb-8 flex-grow">
                         Sistem kasir modern dengan manajemen inventory real-time. Dibangun untuk kecepatan transaksi tinggi dan UI Dark-Premium.
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-8 text-[8px] font-bold text-slate-500 uppercase tracking-widest">
-                        <span class="border border-white/10 px-2 py-1 rounded">Laravel 12</span>
-                        <span class="border border-white/10 px-2 py-1 rounded">MySQL</span>
-                    </div>
                     <div class="flex items-center gap-6">
-                        <a href="https://lumina-pos-production.up.railway.app" target="_blank" class="text-[10px] font-black text-white bg-emerald-600 px-6 py-3 rounded-xl hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 tracking-widest text-center w-full">OPEN POS →</a>
+                        <a href="https://lumina-pos-production.up.railway.app" target="_blank" class="text-[10px] font-black text-white bg-emerald-600 px-6 py-3 rounded-xl hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 tracking-widest text-center w-full uppercase">Open System →</a>
                     </div>
                 </div>
             </div>
@@ -224,21 +212,17 @@
             <div data-aos="fade-up" data-aos-delay="400" class="group relative p-1 rounded-3xl bg-gradient-to-b from-indigo-500/20 to-transparent hover:from-indigo-600/60 transition-all duration-500">
                 <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
                     <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5">
-                        <img src="{{ asset('images/voting-preview.png') }}" alt="E-Voting" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop" alt="E-Voting" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-indigo-500/20">Encrypted</span>
+                        <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-indigo-500/20">Secure v2.0</span>
                     </div>
                     <h4 class="text-2xl font-black text-white mb-4 italic tracking-tighter uppercase">Secure <span class="text-indigo-500">E-Voting</span></h4>
                     <p class="text-[11px] text-slate-400 leading-relaxed mb-8 flex-grow">
                         Aplikasi pemungutan suara dengan keamanan SHA-256. Menjamin integritas data dari manipulasi database.
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-8 text-[8px] font-bold text-slate-500 uppercase tracking-widest">
-                        <span class="border border-white/10 px-2 py-1 rounded">Security</span>
-                        <span class="border border-white/10 px-2 py-1 rounded">Laravel</span>
-                    </div>
                     <div class="flex items-center gap-6">
-                        <a href="https://evoting-secure-production.up.railway.app" target="_blank" class="text-[10px] font-black text-white bg-indigo-600 px-6 py-3 rounded-xl hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 tracking-widest text-center w-full">VIEW LIVE →</a>
+                        <a href="https://evoting-secure-production.up.railway.app" target="_blank" class="text-[10px] font-black text-white bg-indigo-600 px-6 py-3 rounded-xl hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 tracking-widest text-center w-full uppercase">Check Integrity →</a>
                     </div>
                 </div>
             </div>
@@ -246,30 +230,55 @@
         </div>
     </div>
 </section>
-    <section id="tech" class="py-32 px-8">
-        <div class="max-w-6xl mx-auto">
-            <h3 data-aos="zoom-in" class="text-center text-white text-3xl font-bold mb-20 italic underline decoration-indigo-500 underline-offset-8">Modern Stack Expertise</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div data-aos="fade-up" data-aos-delay="100" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-indigo-500/50 transition group">
-                    <div class="text-indigo-500 text-3xl font-black mb-4 group-hover:scale-110 transition">PHP</div>
-                    <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Version 8.4</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="200" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-indigo-500/50 transition group">
-                    <div class="text-indigo-500 text-3xl font-black mb-4 group-hover:scale-110 transition">Go</div>
-                    <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Concurrency</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="300" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-indigo-500/50 transition group">
-                    <div class="text-indigo-500 text-3xl font-black mb-4 group-hover:scale-110 transition">Postgres</div>
-                    <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Relational</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="400" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-indigo-500/50 transition group">
-                    <div class="text-indigo-500 text-3xl font-black mb-4 group-hover:scale-110 transition">Docker</div>
-                    <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">DevOps</p>
-                </div>
+   <section id="tech" class="py-32 px-8">
+    <div class="max-w-6xl mx-auto">
+        <h3 data-aos="zoom-in" class="text-center text-white text-3xl font-bold mb-20 italic underline decoration-indigo-500 underline-offset-8">Modern Stack Expertise</h3>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            
+            <div data-aos="fade-up" data-aos-delay="100" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-indigo-500/50 transition group">
+                <div class="text-indigo-500 text-3xl font-black mb-2 group-hover:scale-110 transition">PHP</div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">v8.4 / Laravel 12</p>
             </div>
-        </div>
-    </section>
 
+            <div data-aos="fade-up" data-aos-delay="200" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-yellow-500/50 transition group">
+                <div class="text-yellow-500 text-3xl font-black mb-2 group-hover:scale-110 transition">JS</div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">ES6+ / Node.js</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="300" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-blue-500/50 transition group">
+                <div class="text-blue-500 text-3xl font-black mb-2 group-hover:scale-110 transition">TS</div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Type Safety</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="400" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-cyan-500/50 transition group">
+                <div class="text-cyan-500 text-3xl font-black mb-2 group-hover:scale-110 transition">GO</div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Concurrency</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="500" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-orange-500/50 transition group">
+                <div class="text-orange-500 text-3xl font-black mb-2 group-hover:scale-110 transition">HTML</div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Semantic UI</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="600" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-sky-400/50 transition group">
+                <div class="text-sky-400 text-3xl font-black mb-2 group-hover:scale-110 transition">T-CSS</div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Modern Styling</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="700" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-indigo-400/50 transition group">
+                <div class="text-indigo-400 text-3xl font-black mb-2 group-hover:scale-110 transition">SQL</div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">PostgreSQL</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="800" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-blue-600/50 transition group">
+                <div class="text-blue-600 text-3xl font-black mb-2 group-hover:scale-110 transition">DOCKER</div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Containerization</p>
+            </div>
+
+        </div>
+    </div>
+</section>
     <footer class="py-20 text-center bg-black/40 border-t border-white/5">
         <div class="flex justify-center gap-12 mb-12">
             <a href="https://www.linkedin.com/in/yafao-mabe-lamboe-6b829b292/" target="_blank" class="text-slate-500 hover:text-indigo-400 transition tracking-widest font-bold text-[10px] uppercase">LinkedIn</a>
