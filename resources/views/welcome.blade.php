@@ -170,16 +170,34 @@
             <div class="h-[1px] flex-grow bg-white/5"></div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
             
-            <div data-aos="fade-up" class="group relative p-1 rounded-3xl bg-gradient-to-b from-blue-500/20 to-transparent hover:from-blue-600/60 transition-all duration-500">
+            <div data-aos="fade-up" class="group relative p-1 rounded-3xl bg-gradient-to-b from-amber-500/20 to-transparent hover:from-amber-600/60 transition-all duration-500">
+                <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
+                    <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5 relative">
+                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=800&auto=format&fit=crop" alt="LAMBOE Express" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-amber-500/20">Vercel Edge</span>
+                        <div class="w-2 h-2 bg-amber-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(245,158,11,0.8)]"></div>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-4 italic tracking-tighter uppercase">si L.A.M.B.O.E<span class="text-amber-500">.Express</span></h4>
+                    <p class="text-[11px] text-slate-400 leading-relaxed mb-8 flex-grow">
+                        Sistem ekspedisi futuristik dengan <span class="text-amber-400 font-mono italic">Real-Time Tracking</span>, Live Chat Kurir, dan Video Proof Delivery. Menggunakan <span class="text-white">LocalStorage Persistence</span> untuk simulasi dashboard yang fungsional.
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <a href="https://lamboe-ekspress.vercel.app/" target="_blank" class="text-[10px] font-black text-slate-900 bg-amber-500 px-6 py-3 rounded-xl hover:bg-amber-400 transition shadow-lg shadow-amber-600/20 tracking-widest text-center w-full uppercase">Ship Now →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="100" class="group relative p-1 rounded-3xl bg-gradient-to-b from-blue-500/20 to-transparent hover:from-blue-600/60 transition-all duration-500">
                 <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
                     <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5 relative">
                         <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" alt="Gemini AI" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="flex justify-between items-start mb-6">
                         <span class="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-blue-500/20">Live on Vercel</span>
-                        <div class="w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
                     </div>
                     <h4 class="text-2xl font-black text-white mb-4 italic tracking-tighter uppercase">Gemini<span class="text-blue-500">.Chat-API</span></h4>
                     <p class="text-[11px] text-slate-400 leading-relaxed mb-8 flex-grow">
@@ -209,7 +227,7 @@
                 </div>
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="400" class="group relative p-1 rounded-3xl bg-gradient-to-b from-indigo-500/20 to-transparent hover:from-indigo-600/60 transition-all duration-500">
+            <div data-aos="fade-up" data-aos-delay="300" class="group relative p-1 rounded-3xl bg-gradient-to-b from-indigo-500/20 to-transparent hover:from-indigo-600/60 transition-all duration-500">
                 <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
                     <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5">
                         <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop" alt="E-Voting" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
