@@ -163,90 +163,224 @@
             </div>
         </div>
     </section>
-<section id="work" class="py-32 px-8 bg-slate-900/20 border-y border-white/5">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex items-center gap-4 mb-16" data-aos="fade-right">
-            <h3 class="text-indigo-500 font-mono text-xs uppercase tracking-[0.5em]">// Live Systems & Deployments</h3>
-            <div class="h-[1px] flex-grow bg-white/5"></div>
+<style>
+    /* Custom Cursor Style */
+    .project-cursor {
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.3s ease;
+    }
+    .project-cursor span {
+        color: white;
+        font-size: 8px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    .group:hover ~ .project-cursor, 
+    .group:hover .project-cursor {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Glossy Shimmer Animation */
+    @keyframes shimmer {
+        0% { transform: translateX(-150%) skewX(-25deg); }
+        100% { transform: translateX(150%) skewX(-25deg); }
+    }
+    .shimmer-effect::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+        animation: shimmer 3s infinite;
+    }
+
+    /* Floating Index Number */
+    .project-index {
+        position: absolute;
+        top: -20px;
+        right: 10px;
+        font-size: 120px;
+        font-weight: 900;
+        line-height: 1;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255,255,255,0.03);
+        z-index: 0;
+        pointer-events: none;
+        font-style: italic;
+    }
+</style>
+
+<section id="work" class="py-32 px-8 bg-[#020617] relative overflow-hidden" x-data="{ mouseX: 0, mouseY: 0 }" @mousemove="mouseX = $event.clientX; mouseY = $event.clientY">
+    
+    <div class="project-cursor hidden lg:flex" :style="`left: ${mouseX}px; top: ${mouseY}px`" id="custom-cursor">
+        <span>View Project</span>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col mb-24" data-aos="fade-up">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="h-[1px] w-12 bg-indigo-500"></div>
+                <h3 class="text-indigo-500 font-mono text-xs uppercase tracking-[0.5em]">Selected Artifacts</h3>
+            </div>
+            <h2 class="text-5xl md:text-7xl font-black text-white italic tracking-tighter uppercase">
+                Featured <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-slate-500">Deployments</span>
+            </h2>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
             
-            <div data-aos="fade-up" class="group relative p-1 rounded-3xl bg-gradient-to-b from-amber-500/20 to-transparent hover:from-amber-600/60 transition-all duration-500">
-                <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
-                    <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5 relative">
-                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=800&auto=format&fit=crop" alt="LAMBOE Express" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-amber-500/20">Vercel Edge</span>
-                        <div class="w-2 h-2 bg-amber-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(245,158,11,0.8)]"></div>
-                    </div>
-                    <h4 class="text-2xl font-black text-white mb-4 italic tracking-tighter uppercase">si L.A.M.B.O.E<span class="text-amber-500">.Express</span></h4>
-                    <p class="text-[11px] text-slate-400 leading-relaxed mb-8 flex-grow">
-                        Sistem ekspedisi futuristik dengan <span class="text-amber-400 font-mono italic">Real-Time Tracking</span>, Live Chat Kurir, dan Video Proof Delivery. Menggunakan <span class="text-white">LocalStorage Persistence</span> untuk simulasi dashboard yang fungsional.
-                    </p>
-                    <div class="flex items-center gap-6">
-                        <a href="https://lamboe-ekspress.vercel.app/" target="_blank" class="text-[10px] font-black text-slate-900 bg-amber-500 px-6 py-3 rounded-xl hover:bg-amber-400 transition shadow-lg shadow-amber-600/20 tracking-widest text-center w-full uppercase">Ship Now →</a>
+            <div data-aos="fade-up" 
+                 class="group relative"
+                 @mouseenter="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(1)'"
+                 @mouseleave="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(0)'">
+                
+                <span class="project-index">01</span>
+                
+                <div class="relative z-10 p-[1px] rounded-[2.5rem] bg-gradient-to-b from-amber-500/30 via-transparent to-transparent hover:from-amber-500 transition-all duration-700 overflow-hidden shimmer-effect">
+                    <div class="bg-[#0b1224] p-10 rounded-[2.45rem] h-full flex flex-col border border-white/5">
+                        <div class="mb-8 overflow-hidden rounded-3xl aspect-video bg-slate-900 relative border border-white/10">
+                            <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=800&auto=format&fit=crop" alt="LAMBOE Express" class="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1224] via-transparent to-transparent"></div>
+                        </div>
+
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-[9px] font-black text-amber-500 border border-amber-500/30 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] bg-amber-500/5">System v1.0 // Edge</span>
+                            <div class="flex gap-1">
+                                <div class="w-1 h-1 bg-amber-500 rounded-full animate-ping"></div>
+                                <div class="w-1 h-1 bg-amber-500 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter uppercase italic">L.A.M.B.O.E<span class="text-amber-500">.Express</span></h4>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-10 font-medium">
+                            Arsitektur ekspedisi futuristik dengan integrasi <span class="text-white italic">Real-Time Logistics</span>. UI didesain untuk efisiensi tinggi dengan skema warna industrial premium.
+                        </p>
+
+                        <div class="mt-auto">
+                            <a href="https://lamboe-ekspress.vercel.app/" target="_blank" class="inline-flex items-center gap-4 text-[10px] font-black text-white group-hover:text-amber-400 transition-colors uppercase tracking-[0.3em]">
+                                Explore Deployment <span class="w-8 h-[1px] bg-amber-500 group-hover:w-16 transition-all duration-500"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="100" class="group relative p-1 rounded-3xl bg-gradient-to-b from-blue-500/20 to-transparent hover:from-blue-600/60 transition-all duration-500">
-                <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
-                    <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5 relative">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" alt="Gemini AI" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-blue-500/20">Live on Vercel</span>
-                    </div>
-                    <h4 class="text-2xl font-black text-white mb-4 italic tracking-tighter uppercase">Gemini<span class="text-blue-500">.Chat-API</span></h4>
-                    <p class="text-[11px] text-slate-400 leading-relaxed mb-8 flex-grow">
-                        Integrasi Google Gemini AI untuk chatbot cerdas. Menangani request kompleks dengan <span class="text-blue-400 font-mono italic">Natural Language Processing</span> secara real-time.
-                    </p>
-                    <div class="flex items-center gap-6">
-                        <a href="https://projectfinal-avpn-ancy.vercel.app/" target="_blank" class="text-[10px] font-black text-white bg-blue-600 px-6 py-3 rounded-xl hover:bg-blue-500 transition shadow-lg shadow-blue-600/20 tracking-widest text-center w-full uppercase">Launch API AI →</a>
+            <div data-aos="fade-up" data-aos-delay="100" 
+                 class="group relative"
+                 @mouseenter="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(1)'"
+                 @mouseleave="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(0)'">
+                
+                <span class="project-index">02</span>
+
+                <div class="relative z-10 p-[1px] rounded-[2.5rem] bg-gradient-to-b from-blue-500/30 via-transparent to-transparent hover:from-blue-500 transition-all duration-700 overflow-hidden shimmer-effect">
+                    <div class="bg-[#0b1224] p-10 rounded-[2.45rem] h-full flex flex-col border border-white/5">
+                        <div class="mb-8 overflow-hidden rounded-3xl aspect-video bg-slate-900 relative border border-white/10">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" alt="Gemini AI" class="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1224] via-transparent to-transparent"></div>
+                        </div>
+
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-[9px] font-black text-blue-400 border border-blue-400/30 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] bg-blue-500/5">Neural Intelligence</span>
+                            <div class="flex gap-1">
+                                <div class="w-1 h-1 bg-blue-500 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+
+                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter uppercase italic">Gemini<span class="text-blue-500">.Chat-API</span></h4>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-10 font-medium">
+                            Implementasi Large Language Model untuk asisten virtual. Menangani pemrosesan bahasa alami dengan latensi rendah melalui <span class="text-white italic">Optimized API Gateways</span>.
+                        </p>
+
+                        <div class="mt-auto">
+                            <a href="https://projectfinal-avpn-ancy.vercel.app/" target="_blank" class="inline-flex items-center gap-4 text-[10px] font-black text-white group-hover:text-blue-400 transition-colors uppercase tracking-[0.3em]">
+                                Launch Intelligence <span class="w-8 h-[1px] bg-blue-500 group-hover:w-16 transition-all duration-500"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="200" class="group relative p-1 rounded-3xl bg-gradient-to-b from-emerald-500/20 to-transparent hover:from-emerald-500/60 transition-all duration-500">
-                <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
-                    <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="Lumina POS" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-emerald-500/20">Railway Deploy</span>
-                    </div>
-                    <h4 class="text-2xl font-black text-white mb-4 italic tracking-tighter uppercase">YAFAO<span class="text-emerald-500">.POS</span> Elite</h4>
-                    <p class="text-[11px] text-slate-400 leading-relaxed mb-8 flex-grow">
-                        Sistem kasir modern dengan manajemen inventory real-time. Dibangun untuk kecepatan transaksi tinggi dan UI Dark-Premium.
-                    </p>
-                    <div class="flex items-center gap-6">
-                        <a href="https://lumina-pos-production.up.railway.app" target="_blank" class="text-[10px] font-black text-white bg-emerald-600 px-6 py-3 rounded-xl hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 tracking-widest text-center w-full uppercase">Open System →</a>
+            <div data-aos="fade-up" data-aos-delay="200" 
+                 class="group relative"
+                 @mouseenter="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(1)'"
+                 @mouseleave="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(0)'">
+                
+                <span class="project-index">03</span>
+
+                <div class="relative z-10 p-[1px] rounded-[2.5rem] bg-gradient-to-b from-emerald-500/30 via-transparent to-transparent hover:from-emerald-500 transition-all duration-700 overflow-hidden shimmer-effect">
+                    <div class="bg-[#0b1224] p-10 rounded-[2.45rem] h-full flex flex-col border border-white/5">
+                        <div class="mb-8 overflow-hidden rounded-3xl aspect-video bg-slate-900 relative border border-white/10">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="Lumina POS" class="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1224] via-transparent to-transparent"></div>
+                        </div>
+
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-[9px] font-black text-emerald-400 border border-emerald-400/30 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] bg-emerald-500/5">Enterprise POS</span>
+                        </div>
+
+                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter uppercase italic">YAFAO<span class="text-emerald-500">.POS</span> Elite</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-10 font-medium">
+                            Sistem manajemen transaksi tingkat korporasi. Fokus pada keamanan data dan antarmuka pengguna yang memberikan kesan <span class="text-white italic">Luxurious-Dark</span>.
+                        </p>
+
+                        <div class="mt-auto">
+                            <a href="https://lumina-pos-production.up.railway.app" target="_blank" class="inline-flex items-center gap-4 text-[10px] font-black text-white group-hover:text-emerald-400 transition-colors uppercase tracking-[0.3em]">
+                                Access Terminal <span class="w-8 h-[1px] bg-emerald-500 group-hover:w-16 transition-all duration-500"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="300" class="group relative p-1 rounded-3xl bg-gradient-to-b from-indigo-500/20 to-transparent hover:from-indigo-600/60 transition-all duration-500">
-                <div class="bg-[#0b0f1a] p-8 rounded-[1.4rem] h-full flex flex-col">
-                    <div class="mb-6 overflow-hidden rounded-xl aspect-video bg-slate-800 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop" alt="E-Voting" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest border border-indigo-500/20">Secure v2.0</span>
-                    </div>
-                    <h4 class="text-2xl font-black text-white mb-4 italic tracking-tighter uppercase">Secure <span class="text-indigo-500">E-Voting</span></h4>
-                    <p class="text-[11px] text-slate-400 leading-relaxed mb-8 flex-grow">
-                        Aplikasi pemungutan suara dengan keamanan SHA-256. Menjamin integritas data dari manipulasi database.
-                    </p>
-                    <div class="flex items-center gap-6">
-                        <a href="https://evoting-secure-production.up.railway.app" target="_blank" class="text-[10px] font-black text-white bg-indigo-600 px-6 py-3 rounded-xl hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 tracking-widest text-center w-full uppercase">Check Integrity →</a>
+            <div data-aos="fade-up" data-aos-delay="300" 
+                 class="group relative"
+                 @mouseenter="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(1)'"
+                 @mouseleave="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(0)'">
+                
+                <span class="project-index">04</span>
+
+                <div class="relative z-10 p-[1px] rounded-[2.5rem] bg-gradient-to-b from-indigo-500/30 via-transparent to-transparent hover:from-indigo-500 transition-all duration-700 overflow-hidden shimmer-effect">
+                    <div class="bg-[#0b1224] p-10 rounded-[2.45rem] h-full flex flex-col border border-white/5">
+                        <div class="mb-8 overflow-hidden rounded-3xl aspect-video bg-slate-900 relative border border-white/10">
+                            <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop" alt="E-Voting" class="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1224] via-transparent to-transparent"></div>
+                        </div>
+
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-[9px] font-black text-indigo-400 border border-indigo-400/30 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] bg-indigo-500/5">Cryptography v2</span>
+                        </div>
+
+                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter uppercase italic">Secure <span class="text-indigo-500">E-Voting</span></h4>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-10 font-medium">
+                            Aplikasi pemungutan suara digital dengan enkripsi tingkat tinggi. Mengutamakan integritas setiap suara dengan protokol keamanan yang tidak tertembus.
+                        </p>
+
+                        <div class="mt-auto">
+                            <a href="https://evoting-secure-production.up.railway.app" target="_blank" class="inline-flex items-center gap-4 text-[10px] font-black text-white group-hover:text-indigo-400 transition-colors uppercase tracking-[0.3em]">
+                                Verify Integrity <span class="w-8 h-[1px] bg-indigo-500 group-hover:w-16 transition-all duration-500"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
+
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 </section>
    <section id="tech" class="py-32 px-8">
     <div class="max-w-6xl mx-auto">
