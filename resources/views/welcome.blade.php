@@ -234,9 +234,6 @@
                 <div class="h-[1px] w-12 bg-indigo-500"></div>
                 <h3 class="text-indigo-500 font-mono text-xs uppercase tracking-[0.5em]">Selected Artifacts</h3>
             </div>
-            <h2 class="text-5xl md:text-7xl font-black text-white italic tracking-tighter uppercase">
-                Featured <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-slate-500">Deployments</span>
-            </h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
