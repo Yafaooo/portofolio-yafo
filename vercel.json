@@ -1,29 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/index.php",
-      "use": "vercel-php@0.6.1"
-    },
-    {
-      "src": "/public/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(css|js|images)/(.*)",
-      "dest": "/public/$1/$2"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.php"
-    }
-  ],
-  "env": {
-    "APP_ENV": "production",
-    "APP_DEBUG": "false",
-    "APP_URL": "https://portofolio-yafo.vercel.app",
-    "ASSET_URL": "https://portofolio-yafo.vercel.app"
-  }
+      "functions": {
+              "api/index.php": {
+                        "runtime": "@vercel/php"
+              }
+      },
+      "routes": [
+              {
+                        "src": "/(.*)",
+                        "dest": "/api/index.php"
+              }
+      ]
 }
