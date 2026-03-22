@@ -6,462 +6,530 @@
     <title>Yafao Mabe Lamboe, S.Kom | Software Engineer</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .bg-grid { background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 40px 40px; }
-        .aurora {
-            position: absolute; width: 400px; height: 400px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
-            filter: blur(60px); z-index: -1;
+        :root {
+            --bg-color: #030712;
         }
-        .typed-cursor { color: #4f46e5; font-size: 1.2em; }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-color);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .font-space { font-family: 'Space Grotesk', sans-serif; }
+
+        /* --- 1. GLOBAL SPOTLIGHT & NOISE --- */
+        .noise-bg {
+            position: fixed; inset: 0; z-index: 9999;
+            pointer-events: none; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .spotlight {
+            position: fixed; inset: 0; pointer-events: none; z-index: 0;
+            background: radial-gradient(circle 800px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(79, 70, 229, 0.08), transparent 40%);
+            transition: background 0.1s ease;
+        }
+
+        /* --- 2. MAGNETIC MODERN NAVBAR --- */
+        .modern-nav {
+            position: relative; display: flex; align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px; padding: 4px;
+        }
+
+        .nav-link {
+            position: relative; padding: 10px 24px; font-size: 10px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.2em; color: #94a3b8;
+            transition: all 0.4s ease; z-index: 1; font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .nav-link:hover { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+
+        .nav-indicator {
+            position: absolute; height: calc(100% - 8px);
+            background: linear-gradient(90deg, rgba(79, 70, 229, 0.3), rgba(99, 102, 241, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.5);
+            border-radius: 999px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0; pointer-events: none; opacity: 0;
+            box-shadow: inset 0 0 20px rgba(79, 70, 229, 0.2);
+        }
+
+        .nav-hire-btn { background: #4f46e5; color: white !important; border-radius: 999px; margin-left: 8px; box-shadow: 0 0 20px rgba(79, 70, 229, 0.4); }
+
+        /* --- 3. 3D TILT CARDS & GLOW BORDERS --- */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s ease-out;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative; overflow: hidden;
+        }
+
+        .tilt-card::before {
+            content: ""; position: absolute; inset: 0; border-radius: inherit;
+            padding: 1px;
+            background: radial-gradient(800px circle at var(--card-mouse-x, 0) var(--card-mouse-y, 0), rgba(255, 255, 255, 0.3), transparent 40%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            pointer-events: none; z-index: 1;
+        }
+
+        .card-content-3d { transform: translateZ(50px); }
+        .card-image-3d { transform: translateZ(30px); transition: all 0.5s ease; }
+        .tilt-card:hover .card-image-3d { transform: translateZ(40px) scale(1.05); }
+
+        /* --- 4. ADVANCED BUTTON ANIMATION (LASER SCAN) --- */
+        @keyframes scanline {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .animate-scanline {
+            animation: scanline 1.5s linear infinite;
+        }
+
+        /* --- 5. ANIMATED BENTO GRID (TECH STACK) --- */
+        .bento-box {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px; position: relative; overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .bento-box:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); }
+        
+        @keyframes rotate-border { 100% { transform: rotate(360deg); } }
+        .bento-glow::before {
+            content: ''; position: absolute; width: 200%; height: 200%;
+            top: -50%; left: -50%; z-index: -1;
+            background: conic-gradient(transparent, transparent, transparent, var(--accent-color));
+            animation: rotate-border 4s linear infinite; opacity: 0; transition: opacity 0.3s;
+        }
+        .bento-box:hover .bento-glow::before { opacity: 1; }
+        .bento-glow::after {
+            content: ''; position: absolute; inset: 2px;
+            background: #050810; border-radius: 22px; z-index: -1;
+        }
+
+        /* --- 6. MARQUEE TEXT --- */
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100vw; position: absolute; left: 0; opacity: 0.05; pointer-events: none; user-select: none; }
+        .marquee-text { display: inline-block; animation: marquee 30s linear infinite; font-size: 15vw; font-weight: 900; text-transform: uppercase; color: white; line-height: 1; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
     </style>
 </head>
-<body class="bg-[#050810] text-slate-300 bg-grid relative overflow-x-hidden">
+<body class="relative">
 
-    <div class="aurora top-[-100px] left-[-100px]"></div>
-    <div class="aurora bottom-[20%] right-[-100px] bg-indigo-900/10"></div>
+    <div class="noise-bg"></div>
+    <div class="spotlight" id="global-spotlight"></div>
+    <div class="fixed top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50 z-50"></div>
 
-    <a href="https://wa.me/6282272463816" target="_blank" class="fixed bottom-8 left-8 z-[60] bg-indigo-600 hover:bg-indigo-500 text-white p-4 rounded-full shadow-lg shadow-indigo-500/20 transition-all hover:scale-110 active:scale-95 group">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.887-11.888 3.174 0 6.16 1.236 8.41 3.484 2.247 2.248 3.481 5.231 3.481 8.401 0 6.556-5.331 11.888-11.887 11.888-2.01 0-3.987-.506-5.741-1.465l-6.249 1.689zm5.989-4.759c1.636.973 3.239 1.417 4.881 1.417 5.469 0 9.918-4.448 9.918-9.917 0-2.657-1.035-5.151-2.914-7.03-1.876-1.877-4.372-2.913-7.004-2.913-5.469 0-9.918 4.45-9.918 9.917 0 1.838.513 3.635 1.485 5.189l-.955 3.486 3.507-.949zm8.502-12.191c-.244-.543-.499-.554-.73-.564-.189-.008-.405-.008-.621-.008-.216 0-.568.082-.865.407-.298.324-1.137 1.111-1.137 2.71 0 1.598 1.163 3.141 1.325 3.358.163.216 2.287 3.493 5.542 4.894.774.333 1.379.531 1.85.682.776.246 1.484.212 2.043.129.622-.094 1.913-.781 2.183-1.536.271-.754.271-1.401.19-1.536-.082-.135-.298-.216-.622-.38s-1.913-.943-2.21-.1.051-1.163-.163-1.325-.216-.622-.379-.325z"/></svg>
-        <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-widest uppercase">Chat Yafao</span>
+    <a href="https://wa.me/6282272463816" target="_blank" class="fixed bottom-8 left-8 z-[60] bg-indigo-600/80 backdrop-blur-md text-white p-4 rounded-full shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all hover:scale-110 active:scale-95 group border border-indigo-400/50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.887-11.888 3.174 0 6.16 1.236 8.41 3.484 2.247 2.248 3.481 5.231 3.481 8.401 0 6.556-5.331 11.888-11.887 11.888-2.01 0-3.987-.506-5.741-1.465l-6.249 1.689zm5.989-4.759c1.636.973 3.239 1.417 4.881 1.417 5.469 0 9.918-4.448 9.918-9.917 0-2.657-1.035-5.151-2.914-7.03-1.876-1.877-4.372-2.913-7.004-2.913-5.469 0-9.918 4.45-9.918 9.917 0 1.838.513 3.635 1.485 5.189l-.955 3.486 3.507-.949z"/></svg>
+        <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-slate-900/90 backdrop-blur-sm border border-white/10 text-white text-[9px] px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-[0.2em] uppercase font-space">Establish Connection</span>
     </a>
 
-    <nav data-aos="fade-down" class="fixed w-full top-0 z-50 bg-[#050810]/80 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-6xl mx-auto px-8 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center font-extrabold text-white italic shadow-lg shadow-indigo-600/20">Y</div>
-                <span class="text-sm tracking-[0.3em] font-bold text-white uppercase">Yafao.Dev</span>
+    <nav data-aos="fade-down" class="fixed w-full top-0 z-50 bg-[#030712]/50 backdrop-blur-2xl border-b border-white/[0.02]">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4 w-full md:w-auto justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center font-space font-extrabold text-white text-xs">Y.</div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-space tracking-[0.4em] font-bold text-white uppercase">Yafao.Sys</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_#10b981]"></div>
+                            <span class="text-[8px] text-slate-400 font-mono" id="system-time">LOADING...</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.2em] font-bold">
-                <a href="#about" class="hover:text-indigo-400 transition">Experience</a>
-                <a href="#work" class="hover:text-indigo-400 transition">Projects</a>
-                <a href="#tech" class="hover:text-indigo-400 transition">Stack</a>
-                <a href="https://wa.me/6282272463816" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/10">Hire Me</a>
+            
+            <div class="hidden md:flex modern-nav" id="headerNav">
+                <div class="nav-indicator" id="navIndicator"></div>
+                <a href="#about" class="nav-link" onmouseover="moveNavIndicator(this)">Architecture</a>
+                <a href="#work" class="nav-link" onmouseover="moveNavIndicator(this)">Artifacts</a>
+                <a href="#tech" class="nav-link" onmouseover="moveNavIndicator(this)">Core Stack</a>
+                <a href="https://wa.me/6282272463816" class="nav-link nav-hire-btn" onmouseover="moveNavIndicator(this)">Init.Hire()</a>
             </div>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center px-8 pt-20">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-1">
-                <div data-aos="fade-right" class="inline-block px-3 py-1 border border-indigo-500/30 rounded-full bg-indigo-500/5 text-indigo-400 text-[10px] font-bold tracking-widest uppercase mb-6">
-                    S1 Software Engineering
-                </div>
-                <h1 data-aos="fade-right" data-aos-delay="200" class="text-6xl md:text-8xl font-extrabold text-white mb-4 tracking-tighter leading-none">
-                    Yafao Mabe <br> <span class="text-indigo-600">Lamboe.</span>
-                </h1>
-                <div data-aos="fade-right" data-aos-delay="300" class="text-xl md:text-2xl font-mono text-indigo-400 mb-8 h-8">
-                    I am a <span id="typing-text"></span>
-                </div>
-                <p data-aos="fade-right" data-aos-delay="400" class="text-lg text-slate-400 leading-relaxed mb-10 max-w-lg">
-                    Mentransformasi logika kompleks menjadi sistem yang elegan. Spesialisasi dalam pembangunan arsitektur backend yang <span class="text-white font-bold">scalable</span> dan <span class="text-white font-bold">secure</span>.
-                </p>
-                <div data-aos="fade-up" data-aos-delay="600" class="flex gap-6">
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-bold text-white">S.Kom</span>
-                        <span class="text-[10px] uppercase tracking-widest text-slate-500">Degree</span>
-                    </div>
-                    <div class="w-[1px] h-10 bg-white/10"></div>
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-bold text-white">Laravel 12</span>
-                        <span class="text-[10px] uppercase tracking-widest text-slate-500">Core Stack</span>
-                    </div>
-                </div>
-            </div>
-            <div class="order-1 md:order-2 flex justify-center" data-aos="zoom-in" data-aos-duration="1500">
-                <div class="relative group">
-                    <div class="absolute -inset-4 bg-indigo-600/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
-                    <div class="relative w-72 h-72 md:w-96 md:h-96 overflow-hidden rounded-full border-2 border-indigo-500/30 p-2 bg-[#050810]">
-                        <img src="images/fotosaya.jpeg" alt="Yafao Mabe Lamboe" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition duration-700 scale-110 hover:scale-100">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-32 px-8 bg-black/20">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex items-center gap-4 mb-16" data-aos="fade-right">
-                <h3 class="text-indigo-500 font-mono text-xs uppercase tracking-[0.3em]">01. Professional Experience</h3>
-                <div class="h-[1px] flex-grow bg-white/5"></div>
-            </div>
-            
-            <div class="space-y-20">
-                <div class="grid md:grid-cols-3 gap-8 border-t border-white/5 pt-12" data-aos="fade-up">
-                    <div class="text-slate-500 font-mono text-sm tracking-widest italic">2024 â€” 2026</div>
-                    <div class="md:col-span-2">
-                        <h4 class="text-2xl font-bold text-white mb-2 italic">Guru Informatika (IT Educator)</h4>
-                        <p class="text-indigo-400 font-bold mb-6 tracking-wide uppercase text-sm">SMAK Kasih Karunia & SMP Swasta Teladan Medan</p>
-                        <p class="text-slate-400 leading-relaxed mb-6">
-                            Mendidik siswa dalam bidang Rekayasa Perangkat Lunak, fokus pada logika pemrograman dan pengembangan solusi digital untuk kebutuhan internal sekolah.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8 border-t border-white/5 pt-12">
-                    <div class="text-slate-500 font-mono text-sm tracking-widest italic" data-aos="fade-right">Implementation</div>
-                    <div class="md:col-span-2">
-                        <h4 class="text-2xl font-bold text-white mb-8 uppercase tracking-tighter" data-aos="fade-left">Sistem Informasi & UI/UX Design</h4>
-                        
-                        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
-                            <div data-aos="flip-left" class="bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
-                                <div class="mb-5 overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
-                                    <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                                        <span class="text-white text-[10px] font-bold tracking-widest">VIEW INTERFACE</span>
-                                    </div>
-                                    <img src="images/screenshot-siakad.png" alt="SIAKAD" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-60 group-hover:opacity-100">
-                                </div>
-                                <h5 class="text-white font-bold mb-3 group-hover:text-indigo-400 text-lg">SIAKAD (Akademik)</h5>
-                                <p class="text-[11px] text-slate-400 mb-6">Sistem informasi akademik terpadu untuk efisiensi administrasi sekolah.</p>
-                                <div class="flex items-center justify-between mt-auto">
-                                    <a href="#" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold uppercase tracking-widest">Live Demo</a>
-                                    <span class="text-[9px] font-mono text-indigo-500 bg-indigo-500/10 px-2 py-1 rounded">LARAVEL 12</span>
-                                </div>
-                            </div>
-
-                            <div data-aos="flip-right" data-aos-delay="200" class="bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
-                                <div class="mb-5 overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
-                                    <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                                        <span class="text-white text-[10px] font-bold tracking-widest">VIEW INTERFACE</span>
-                                    </div>
-                                    <img src="images/screenshot-gereja.png" alt="Database Gereja" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-60 group-hover:opacity-100">
-                                </div>
-                                <h5 class="text-white font-bold mb-3 group-hover:text-indigo-400 text-lg">Database Jemaat</h5>
-                                <p class="text-[11px] text-slate-400 mb-6">Sistem manajemen data jemaat dengan enkripsi data dan akurasi tinggi.</p>
-                                <div class="flex items-center justify-between mt-auto">
-                                    <a href="#" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold uppercase tracking-widest">Live Demo</a>
-                                    <span class="text-[9px] font-mono text-indigo-500 bg-indigo-500/10 px-2 py-1 rounded">SQL OPTIMIZED</span>
-                                </div>
-                            </div>
-
-                            <div data-aos="fade-up" data-aos-delay="400" class="lg:col-span-2 bg-white/[0.03] p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all group">
-                                <div class="grid md:grid-cols-2 gap-8 items-center">
-                                    <div class="overflow-hidden rounded-xl border border-white/5 aspect-video bg-slate-800 relative group">
-                                        <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                                            <span class="text-white text-[10px] font-bold tracking-widest">OPEN FIGMA</span>
-                                        </div>
-                                        <img src="images/resort-design.png" alt="UI/UX Resort" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition">
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between items-start mb-3">
-                                            <h5 class="text-white font-bold group-hover:text-indigo-400 text-lg uppercase">Resort Destination App</h5>
-                                            <span class="text-[8px] px-2 py-1 bg-pink-500/20 text-pink-400 rounded-full font-bold uppercase">UI/UX Design</span>
-                                        </div>
-                                        <p class="text-[11px] text-slate-400 mb-6">Perancangan antarmuka aplikasi booking resort mewah dengan pendekatan User-Centered Design.</p>
-                                        <a href="https://www.figma.com/design/VYlEmarX6d5ZWA63EuAlZU/UX-Challenge---Mobile-Datatable---YAFAO?node-id=1-542&t=YNgZHhD1JQDbM42k-1" target="_blank" class="text-[9px] px-4 py-2 bg-indigo-600 text-white rounded-lg font-bold inline-flex items-center gap-2 uppercase tracking-widest">
-                                            <span>View Project</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<style>
-    /* Custom Cursor Style */
-    .project-cursor {
-        width: 100px;
-        height: 100px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transform: translate(-50%, -50%) scale(0);
-        transition: transform 0.3s ease;
-    }
-    .project-cursor span {
-        color: white;
-        font-size: 8px;
-        font-weight: 900;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-    }
-    .group:hover ~ .project-cursor, 
-    .group:hover .project-cursor {
-        transform: translate(-50%, -50%) scale(1);
-    }
-
-    /* Glossy Shimmer Animation */
-    @keyframes shimmer {
-        0% { transform: translateX(-150%) skewX(-25deg); }
-        100% { transform: translateX(150%) skewX(-25deg); }
-    }
-    .shimmer-effect::after {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-        animation: shimmer 3s infinite;
-    }
-
-    /* Floating Index Number */
-    .project-index {
-        position: absolute;
-        top: -20px;
-        right: 10px;
-        font-size: 120px;
-        font-weight: 900;
-        line-height: 1;
-        color: transparent;
-        -webkit-text-stroke: 1px rgba(255,255,255,0.03);
-        z-index: 0;
-        pointer-events: none;
-        font-style: italic;
-    }
-</style>
-
-<section id="work" class="py-32 px-8 bg-[#020617] relative overflow-hidden" x-data="{ mouseX: 0, mouseY: 0 }" @mousemove="mouseX = $event.clientX; mouseY = $event.clientY">
-    
-    <div class="project-cursor hidden lg:flex" :style="`left: ${mouseX}px; top: ${mouseY}px`" id="custom-cursor">
-        <span>View Project</span>
-    </div>
-
-    <div class="max-w-7xl mx-auto relative z-10">
-        <div class="flex flex-col mb-24" data-aos="fade-up">
-            <div class="flex items-center gap-4 mb-4">
-                <div class="h-[1px] w-12 bg-indigo-500"></div>
-                <h3 class="text-indigo-500 font-mono text-xs uppercase tracking-[0.5em]">Selected Artifacts</h3>
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
-            
-            <div data-aos="fade-up" 
-                 class="group relative"
-                 @mouseenter="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(1)'"
-                 @mouseleave="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(0)'">
-                
-                <span class="project-index">01</span>
-                
-                <div class="relative z-10 p-[1px] rounded-[2.5rem] bg-gradient-to-b from-amber-500/30 via-transparent to-transparent hover:from-amber-500 transition-all duration-700 overflow-hidden shimmer-effect">
-                    <div class="bg-[#0b1224] p-10 rounded-[2.45rem] h-full flex flex-col border border-white/5">
-                        <div class="mb-8 overflow-hidden rounded-3xl aspect-video bg-slate-900 relative border border-white/10">
-                            <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=800&auto=format&fit=crop" alt="LAMBOE Express" class="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1224] via-transparent to-transparent"></div>
-                        </div>
-
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="text-[9px] font-black text-amber-500 border border-amber-500/30 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] bg-amber-500/5">System v1.0 // Edge</span>
-                            <div class="flex gap-1">
-                                <div class="w-1 h-1 bg-amber-500 rounded-full animate-ping"></div>
-                                <div class="w-1 h-1 bg-amber-500 rounded-full"></div>
-                            </div>
-                        </div>
-
-                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter uppercase italic">L.A.M.B.O.E<span class="text-amber-500">.Express</span></h4>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-10 font-medium">
-                            Arsitektur ekspedisi futuristik dengan integrasi <span class="text-white italic">Real-Time Logistics</span>. UI didesain untuk efisiensi tinggi dengan skema warna industrial premium.
-                        </p>
-
-                        <div class="mt-auto">
-                            <a href="https://lamboe-ekspress.vercel.app/" target="_blank" class="inline-flex items-center gap-4 text-[10px] font-black text-white group-hover:text-amber-400 transition-colors uppercase tracking-[0.3em]">
-                                Explore Deployment <span class="w-8 h-[1px] bg-amber-500 group-hover:w-16 transition-all duration-500"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="100" 
-                 class="group relative"
-                 @mouseenter="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(1)'"
-                 @mouseleave="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(0)'">
-                
-                <span class="project-index">02</span>
-
-                <div class="relative z-10 p-[1px] rounded-[2.5rem] bg-gradient-to-b from-blue-500/30 via-transparent to-transparent hover:from-blue-500 transition-all duration-700 overflow-hidden shimmer-effect">
-                    <div class="bg-[#0b1224] p-10 rounded-[2.45rem] h-full flex flex-col border border-white/5">
-                        <div class="mb-8 overflow-hidden rounded-3xl aspect-video bg-slate-900 relative border border-white/10">
-                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" alt="Gemini AI" class="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1224] via-transparent to-transparent"></div>
-                        </div>
-
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="text-[9px] font-black text-blue-400 border border-blue-400/30 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] bg-blue-500/5">Neural Intelligence</span>
-                            <div class="flex gap-1">
-                                <div class="w-1 h-1 bg-blue-500 rounded-full animate-pulse"></div>
-                            </div>
-                        </div>
-
-                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter uppercase italic">Gemini<span class="text-blue-500">.Chat-API</span></h4>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-10 font-medium">
-                            Implementasi Large Language Model untuk asisten virtual. Menangani pemrosesan bahasa alami dengan latensi rendah melalui <span class="text-white italic">Optimized API Gateways</span>.
-                        </p>
-
-                        <div class="mt-auto">
-                            <a href="https://projectfinal-avpn-ancy.vercel.app/" target="_blank" class="inline-flex items-center gap-4 text-[10px] font-black text-white group-hover:text-blue-400 transition-colors uppercase tracking-[0.3em]">
-                                Launch Intelligence <span class="w-8 h-[1px] bg-blue-500 group-hover:w-16 transition-all duration-500"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="200" 
-                 class="group relative"
-                 @mouseenter="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(1)'"
-                 @mouseleave="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(0)'">
-                
-                <span class="project-index">03</span>
-
-                <div class="relative z-10 p-[1px] rounded-[2.5rem] bg-gradient-to-b from-emerald-500/30 via-transparent to-transparent hover:from-emerald-500 transition-all duration-700 overflow-hidden shimmer-effect">
-                    <div class="bg-[#0b1224] p-10 rounded-[2.45rem] h-full flex flex-col border border-white/5">
-                        <div class="mb-8 overflow-hidden rounded-3xl aspect-video bg-slate-900 relative border border-white/10">
-                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="Lumina POS" class="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1224] via-transparent to-transparent"></div>
-                        </div>
-
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="text-[9px] font-black text-emerald-400 border border-emerald-400/30 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] bg-emerald-500/5">Enterprise POS</span>
-                        </div>
-
-                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter uppercase italic">YAFAO<span class="text-emerald-500">.POS</span> Elite</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-10 font-medium">
-                            Sistem manajemen transaksi tingkat korporasi. Fokus pada keamanan data dan antarmuka pengguna yang memberikan kesan <span class="text-white italic">Luxurious-Dark</span>.
-                        </p>
-
-                        <div class="mt-auto">
-                            <a href="https://lumina-pos-production.up.railway.app" target="_blank" class="inline-flex items-center gap-4 text-[10px] font-black text-white group-hover:text-emerald-400 transition-colors uppercase tracking-[0.3em]">
-                                Access Terminal <span class="w-8 h-[1px] bg-emerald-500 group-hover:w-16 transition-all duration-500"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="300" 
-                 class="group relative"
-                 @mouseenter="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(1)'"
-                 @mouseleave="document.getElementById('custom-cursor').style.transform = 'translate(-50%, -50%) scale(0)'">
-                
-                <span class="project-index">04</span>
-
-                <div class="relative z-10 p-[1px] rounded-[2.5rem] bg-gradient-to-b from-indigo-500/30 via-transparent to-transparent hover:from-indigo-500 transition-all duration-700 overflow-hidden shimmer-effect">
-                    <div class="bg-[#0b1224] p-10 rounded-[2.45rem] h-full flex flex-col border border-white/5">
-                        <div class="mb-8 overflow-hidden rounded-3xl aspect-video bg-slate-900 relative border border-white/10">
-                            <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop" alt="E-Voting" class="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1224] via-transparent to-transparent"></div>
-                        </div>
-
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="text-[9px] font-black text-indigo-400 border border-indigo-400/30 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] bg-indigo-500/5">Cryptography v2</span>
-                        </div>
-
-                        <h4 class="text-3xl font-black text-white mb-4 italic tracking-tighter uppercase italic">Secure <span class="text-indigo-500">E-Voting</span></h4>
-                        <p class="text-xs text-slate-400 leading-relaxed mb-10 font-medium">
-                            Aplikasi pemungutan suara digital dengan enkripsi tingkat tinggi. Mengutamakan integritas setiap suara dengan protokol keamanan yang tidak tertembus.
-                        </p>
-
-                        <div class="mt-auto">
-                            <a href="https://evoting-secure-production.up.railway.app" target="_blank" class="inline-flex items-center gap-4 text-[10px] font-black text-white group-hover:text-indigo-400 transition-colors uppercase tracking-[0.3em]">
-                                Verify Integrity <span class="w-8 h-[1px] bg-indigo-500 group-hover:w-16 transition-all duration-500"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
-</section>
-   <section id="tech" class="py-32 px-8">
-    <div class="max-w-6xl mx-auto">
-        <h3 data-aos="zoom-in" class="text-center text-white text-3xl font-bold mb-20 italic underline decoration-indigo-500 underline-offset-8">Modern Stack Expertise</h3>
+    <section class="relative min-h-screen flex items-center px-6 pt-32 pb-20 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(79,70,229,0.05),transparent_60%)]"></div>
         
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center relative z-10 w-full">
+            <div class="lg:col-span-7 order-2 lg:order-1">
+                <div data-aos="fade-right" class="inline-flex items-center gap-3 px-4 py-2 border border-indigo-500/20 rounded-full bg-indigo-500/5 backdrop-blur-sm mb-8">
+                    <span class="w-2 h-2 bg-indigo-500 rounded-full animate-ping"></span>
+                    <span class="text-indigo-300 text-[10px] font-space font-bold tracking-[0.3em] uppercase">S1 Software Engineering (2026)</span>
+                </div>
+                
+                <h1 data-aos="fade-up" data-aos-delay="200" class="text-6xl md:text-8xl lg:text-[7rem] font-space font-black text-white mb-6 tracking-tighter leading-[0.9] mix-blend-screen">
+                    YAFAO <br> MABE <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500">LAMBOE.</span>
+                </h1>
+                
+                <div data-aos="fade-up" data-aos-delay="300" class="text-lg md:text-2xl font-mono text-indigo-400/80 mb-8 h-8 flex items-center gap-2">
+                    <span class="text-slate-500">>></span> <span id="typing-text"></span>
+                </div>
+                
+                <p data-aos="fade-up" data-aos-delay="400" class="text-base md:text-lg text-slate-400 leading-relaxed mb-12 max-w-xl font-light">
+                    Mentransformasi kompleksitas logika menjadi arsitektur digital yang presisi. Spesialisasi dalam pengembangan <span class="text-white font-medium border-b border-white/20 pb-0.5">High-Performance Backend Systems</span> dan keamanan data tingkat enterprise.
+                </p>
+
+                <div data-aos="fade-up" data-aos-delay="500" class="flex flex-wrap gap-8 items-center border-t border-white/5 pt-8">
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-space font-bold text-white">S.Kom</span>
+                        <span class="text-[9px] font-mono tracking-[0.3em] text-slate-500 mt-1 uppercase">Academic Degree</span>
+                    </div>
+                    <div class="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-space font-bold text-white flex items-baseline gap-1">12<span class="text-sm text-indigo-500 font-mono">.x</span></span>
+                        <span class="text-[9px] font-mono tracking-[0.3em] text-slate-500 mt-1 uppercase">Laravel Core</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end perspective-1000" data-aos="zoom-in" data-aos-duration="1500">
+                <div class="tilt-card w-72 h-72 md:w-[28rem] md:h-[28rem] rounded-full p-2 group">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-indigo-500/30 animate-[spin_20s_linear_infinite]"></div>
+                    <div class="absolute inset-4 rounded-full border border-white/5 animate-[spin_15s_linear_infinite_reverse]"></div>
+                    
+                    <div class="relative w-full h-full rounded-full overflow-hidden bg-[#030712] card-image-3d">
+                        <img src="images/fotosaya.jpeg" alt="Yafao Mabe Lamboe" class="w-full h-full object-cover grayscale opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-80"></div>
+                        
+                        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-[8px] font-mono text-indigo-400 tracking-[0.5em] text-center w-full card-content-3d opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            [ TARGET ACQUIRED ]<br>SYS.DEV.YAFAO
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center gap-6 mb-24" data-aos="fade-right">
+                <span class="text-5xl font-space font-bold text-white/5">01</span>
+                <div>
+                    <h3 class="text-indigo-400 font-space text-sm tracking-[0.4em] uppercase font-bold">System Architecture</h3>
+                    <div class="h-[1px] w-24 bg-gradient-to-r from-indigo-500 to-transparent mt-2"></div>
+                </div>
+            </div>
             
-            <div data-aos="fade-up" data-aos-delay="100" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-indigo-500/50 transition group">
-                <div class="text-indigo-500 text-3xl font-black mb-2 group-hover:scale-110 transition">PHP</div>
-                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">v8.4 / Laravel 12</p>
-            </div>
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="hidden lg:block lg:col-span-1 relative">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-full bg-white/5"></div>
+                    <div class="absolute top-[10%] left-1/2 -translate-x-1/2 w-3 h-3 bg-[#030712] border-2 border-indigo-500 rounded-full shadow-[0_0_15px_#4f46e5]"></div>
+                    <div class="absolute top-[50%] left-1/2 -translate-x-1/2 w-3 h-3 bg-[#030712] border-2 border-slate-700 rounded-full"></div>
+                </div>
 
-            <div data-aos="fade-up" data-aos-delay="200" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-yellow-500/50 transition group">
-                <div class="text-yellow-500 text-3xl font-black mb-2 group-hover:scale-110 transition">JS</div>
-                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">ES6+ / Node.js</p>
-            </div>
+                <div class="lg:col-span-11 space-y-24">
+                    <div class="tilt-card p-8 md:p-12 rounded-[2rem]" data-aos="fade-up">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 card-content-3d">
+                            <div>
+                                <h4 class="text-3xl font-space font-bold text-white mb-2">Guru Informatika & Matematika</h4>
+                                <p class="text-indigo-400 font-mono text-xs tracking-widest uppercase">SMAK Kasih Karunia & SMP Swasta Teladan</p>
+                            </div>
+                            <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
+                                <span class="text-slate-400 font-mono text-xs tracking-widest">2024 — 2026</span>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed font-light card-content-3d max-w-3xl">
+                            Mentransfer algoritma pemikiran dan fondasi rekayasa perangkat lunak kepada generasi berikutnya. Fokus pada pembentukan logika pemrograman murni dan pengembangan prototipe solusi digital untuk ekosistem sekolah.
+                        </p>
+                    </div>
 
-            <div data-aos="fade-up" data-aos-delay="300" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-blue-500/50 transition group">
-                <div class="text-blue-500 text-3xl font-black mb-2 group-hover:scale-110 transition">TS</div>
-                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Type Safety</p>
+                    <div class="tilt-card p-8 md:p-12 rounded-[2rem] border-t-emerald-500/20" data-aos="fade-up">
+                        <div class="mb-12 card-content-3d">
+                            <h4 class="text-3xl font-space font-bold text-white mb-2">Implementation & UI/UX</h4>
+                            <p class="text-emerald-400 font-mono text-xs tracking-widest uppercase">Real-World Deployments</p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-6 card-content-3d">
+                            <div class="group relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 hover:border-indigo-500/50 transition-colors aspect-[4/3]">
+                                <img src="images/screenshot-siakad.png" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent"></div>
+                                <div class="absolute bottom-4 left-4">
+                                    <h5 class="text-white font-space font-bold">SIAKAD</h5>
+                                    <span class="text-[8px] font-mono text-indigo-400 tracking-widest uppercase">Academic Sys</span>
+                                </div>
+                            </div>
+                            <div class="group relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 hover:border-emerald-500/50 transition-colors aspect-[4/3]">
+                                <img src="images/screenshot-gereja.png" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent"></div>
+                                <div class="absolute bottom-4 left-4">
+                                    <h5 class="text-white font-space font-bold">Database Jemaat</h5>
+                                    <span class="text-[8px] font-mono text-emerald-400 tracking-widest uppercase">Data Management</span>
+                                </div>
+                            </div>
+                            <div class="group relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 hover:border-cyan-500/50 transition-colors aspect-[4/3]">
+                                <img src="images/resort-design.png" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent"></div>
+                                <div class="absolute bottom-4 left-4">
+                                    <h5 class="text-white font-space font-bold">Resort UI/UX</h5>
+                                    <span class="text-[8px] font-mono text-cyan-400 tracking-widest uppercase">Interface Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div data-aos="fade-up" data-aos-delay="400" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-cyan-500/50 transition group">
-                <div class="text-cyan-500 text-3xl font-black mb-2 group-hover:scale-110 transition">GO</div>
-                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Concurrency</p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="500" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-orange-500/50 transition group">
-                <div class="text-orange-500 text-3xl font-black mb-2 group-hover:scale-110 transition">HTML</div>
-                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Semantic UI</p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="600" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-sky-400/50 transition group">
-                <div class="text-sky-400 text-3xl font-black mb-2 group-hover:scale-110 transition">T-CSS</div>
-                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Modern Styling</p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="700" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-indigo-400/50 transition group">
-                <div class="text-indigo-400 text-3xl font-black mb-2 group-hover:scale-110 transition">SQL</div>
-                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">PostgreSQL</p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="800" class="bg-white/[0.03] border border-white/5 p-8 rounded-2xl text-center hover:border-blue-600/50 transition group">
-                <div class="text-blue-600 text-3xl font-black mb-2 group-hover:scale-110 transition">DOCKER</div>
-                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-500">Containerization</p>
-            </div>
-
         </div>
-    </div>
-</section>
-    <footer class="py-20 text-center bg-black/40 border-t border-white/5">
-        <div class="flex justify-center gap-12 mb-12">
-            <a href="https://www.linkedin.com/in/yafao-mabe-lamboe-6b829b292/" target="_blank" class="text-slate-500 hover:text-indigo-400 transition tracking-widest font-bold text-[10px] uppercase">LinkedIn</a>
-            <a href="https://github.com/Yafaooo" target="_blank" class="text-slate-500 hover:text-indigo-400 transition tracking-widest font-bold text-[10px] uppercase">GitHub</a>
-            <a href="https://www.instagram.com/yafaooo_" target="_blank" class="text-slate-500 hover:text-indigo-400 transition tracking-widest font-bold text-[10px] uppercase">Instagram</a>
+    </section>
+
+    <section id="work" class="py-32 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col mb-24" data-aos="fade-up">
+                <div class="flex items-center gap-6 mb-4">
+                    <span class="text-5xl font-space font-bold text-white/5">02</span>
+                    <h3 class="text-indigo-400 font-space text-sm tracking-[0.4em] uppercase font-bold">Engineered Artifacts</h3>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-space font-black text-white tracking-tighter ml-16">
+                    SYSTEM <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400">DEPLOYMENTS.</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="tilt-card lg:col-span-2 rounded-[2rem] p-2" style="--accent-color: #f59e0b;" data-aos="fade-up">
+                    <div class="relative w-full h-[450px] rounded-[1.5rem] overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-transparent pointer-events-none"></div>
+                        
+                        <div class="absolute top-6 left-6 w-6 h-6 border-t-2 border-l-2 border-amber-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-6 right-6 w-6 h-6 border-t-2 border-r-2 border-amber-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        <div class="absolute top-1/2 left-8 -translate-y-1/2 flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700 card-content-3d pointer-events-none">
+                            <div class="w-16 h-[2px] bg-amber-500/80 mb-2 shadow-[0_0_10px_#f59e0b]"></div>
+                            <span class="text-[9px] font-mono text-amber-400 tracking-widest shadow-black drop-shadow-md">LAT: 1.1301 N</span>
+                            <span class="text-[9px] font-mono text-amber-400 tracking-widest shadow-black drop-shadow-md">LNG: 104.053 E</span>
+                            <span class="text-[9px] font-mono text-white tracking-widest animate-pulse mt-2 bg-amber-500/20 px-2 py-1 border border-amber-500/50 inline-block w-max">STATUS: OPTIMAL</span>
+                        </div>
+
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end card-content-3d pointer-events-none">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 pointer-events-auto">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <div class="px-3 py-1 bg-amber-500/20 border border-amber-500/50 rounded-md text-[9px] font-mono text-amber-400 uppercase tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.2)]">v1.0.Logistics</div>
+                                    </div>
+                                    <h4 class="text-4xl font-space font-black text-white mb-2 tracking-tight">L.A.M.B.O.E <span class="text-amber-500 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">Express</span></h4>
+                                    <p class="text-slate-300 text-sm max-w-md font-light leading-relaxed">Arsitektur ekspedisi futuristik dengan Real-Time Logistics. Efisiensi tinggi untuk manajemen armada.</p>
+                                </div>
+                                
+                                <a href="https://lamboe-ekspress.vercel.app/" target="_blank" class="relative overflow-hidden group/btn flex items-center gap-4 bg-[#030712]/80 border border-amber-500/40 backdrop-blur-xl rounded-2xl p-2 hover:bg-[#030712] hover:border-amber-400 transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)]">
+                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10 border border-amber-500/30 group-hover/btn:bg-amber-500 transition-colors duration-500 relative overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-amber-500 group-hover/btn:text-[#030712] group-hover/btn:scale-110 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                    </div>
+                                    <div class="flex flex-col pr-8">
+                                        <span class="text-[8px] font-mono tracking-widest text-amber-500/70 uppercase group-hover/btn:text-amber-400 transition-colors">Protocol: Active</span>
+                                        <span class="text-sm font-space font-bold text-white tracking-[0.2em] uppercase">Init Link</span>
+                                    </div>
+                                    <div class="absolute left-0 w-full h-[2px] bg-amber-400 shadow-[0_0_15px_#f59e0b] animate-scanline pointer-events-none"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tilt-card lg:col-span-1 rounded-[2rem] p-2" style="--accent-color: #3b82f6;" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative w-full h-[450px] rounded-[1.5rem] overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/60 to-transparent"></div>
+                        
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end card-content-3d pointer-events-none">
+                            <div class="flex flex-col gap-4 pointer-events-auto">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <div class="px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded text-[8px] font-mono text-blue-400 uppercase tracking-widest">Neural.API</div>
+                                    </div>
+                                    <h4 class="text-2xl font-space font-black text-white mb-2">Gemini Chat</h4>
+                                    <p class="text-slate-300 text-xs font-light leading-relaxed mb-2">Implementasi LLM canggih untuk asisten virtual via arsitektur API.</p>
+                                </div>
+                                
+                                <a href="https://projectfinal-avpn-ancy.vercel.app/" target="_blank" class="relative overflow-hidden group/btn flex items-center justify-between bg-[#030712]/80 border border-blue-500/40 backdrop-blur-xl rounded-xl p-2 hover:bg-[#030712] hover:border-blue-400 transition-all duration-500 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] w-full">
+                                    <div class="flex flex-col pl-3">
+                                        <span class="text-[8px] font-mono tracking-widest text-blue-500/70 uppercase group-hover/btn:text-blue-400 transition-colors">Port: 8080</span>
+                                        <span class="text-xs font-space font-bold text-white tracking-[0.2em] uppercase">Access Node</span>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-blue-500/10 border border-blue-500/30 group-hover/btn:bg-blue-500 transition-colors duration-500 relative overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-500 group-hover/btn:text-[#030712] group-hover/btn:scale-110 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                    </div>
+                                    <div class="absolute left-0 w-full h-[2px] bg-blue-400 shadow-[0_0_15px_#3b82f6] animate-scanline pointer-events-none"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tilt-card lg:col-span-1 rounded-[2rem] p-2" style="--accent-color: #14b8a6;" data-aos="fade-up">
+                    <div class="relative w-full h-[450px] rounded-[1.5rem] overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/60 to-transparent"></div>
+                        
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end card-content-3d pointer-events-none">
+                            <div class="flex flex-col gap-4 pointer-events-auto">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <div class="px-2 py-1 bg-teal-500/20 border border-teal-500/30 rounded text-[8px] font-mono text-teal-400 uppercase tracking-widest">Edu.Tech</div>
+                                    </div>
+                                    <h4 class="text-2xl font-space font-black text-white mb-2">CBT<span class="text-teal-500">.System</span></h4>
+                                    <p class="text-slate-300 text-xs font-light leading-relaxed mb-2">Platform Ujian Berbasis Komputer dengan manajemen sesi real-time.</p>
+                                </div>
+                                
+                                <a href="https://cbt-app-yafao.vercel.app/" target="_blank" class="relative overflow-hidden group/btn flex items-center justify-between bg-[#030712]/80 border border-teal-500/40 backdrop-blur-xl rounded-xl p-2 hover:bg-[#030712] hover:border-teal-400 transition-all duration-500 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(20,184,166,0.3)] w-full">
+                                    <div class="flex flex-col pl-3">
+                                        <span class="text-[8px] font-mono tracking-widest text-teal-500/70 uppercase group-hover/btn:text-teal-400 transition-colors">Session: Live</span>
+                                        <span class="text-xs font-space font-bold text-white tracking-[0.2em] uppercase">Init Exam</span>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-teal-500/10 border border-teal-500/30 group-hover/btn:bg-teal-500 transition-colors duration-500 relative overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-teal-500 group-hover/btn:text-[#030712] group-hover/btn:scale-110 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    </div>
+                                    <div class="absolute left-0 w-full h-[2px] bg-teal-400 shadow-[0_0_15px_#14b8a6] animate-scanline pointer-events-none"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tilt-card lg:col-span-2 rounded-[2rem] p-2" style="--accent-color: #ec4899;" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative w-full h-[450px] rounded-[1.5rem] overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-transparent pointer-events-none"></div>
+                        
+                        <div class="absolute bottom-6 left-6 w-6 h-6 border-b-2 border-l-2 border-pink-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute bottom-6 right-6 w-6 h-6 border-b-2 border-r-2 border-pink-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                        <div class="absolute top-1/2 right-8 -translate-y-1/2 flex flex-col items-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700 card-content-3d pointer-events-none">
+                            <div class="w-16 h-[2px] bg-pink-500/80 mb-2 shadow-[0_0_10px_#ec4899]"></div>
+                            <span class="text-[9px] font-mono text-pink-400 tracking-widest shadow-black drop-shadow-md">NUXT.JS CORE</span>
+                            <span class="text-[9px] font-mono text-pink-400 tracking-widest shadow-black drop-shadow-md">ROUTER: STABLE</span>
+                            <span class="text-[9px] font-mono text-white tracking-widest animate-pulse mt-2 bg-pink-500/20 px-2 py-1 border border-pink-500/50 inline-block w-max">SSR: ACTIVE</span>
+                        </div>
+
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end card-content-3d pointer-events-none">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 pointer-events-auto">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <div class="px-3 py-1 bg-pink-500/20 border border-pink-500/50 rounded-md text-[9px] font-mono text-pink-400 uppercase tracking-widest shadow-[0_0_15px_rgba(236,72,153,0.2)]">Nuxt.Architecture</div>
+                                    </div>
+                                    <h4 class="text-4xl font-space font-black text-white mb-2 tracking-tight">AA's <span class="text-pink-500 drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]">Booking</span></h4>
+                                    <p class="text-slate-300 text-sm max-w-md font-light leading-relaxed">Sistem reservasi dan booking cerdas berkinerja tinggi yang dibangun dengan optimasi Vue/Nuxt.js.</p>
+                                </div>
+                                
+                                <a href="https://aa-s-booking-nuxt.vercel.app/" target="_blank" class="relative overflow-hidden group/btn flex items-center gap-4 bg-[#030712]/80 border border-pink-500/40 backdrop-blur-xl rounded-2xl p-2 hover:bg-[#030712] hover:border-pink-400 transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(236,72,153,0.3)]">
+                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-pink-500/10 border border-pink-500/30 group-hover/btn:bg-pink-500 transition-colors duration-500 relative overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-pink-500 group-hover/btn:text-[#030712] group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                    </div>
+                                    <div class="flex flex-col pr-8">
+                                        <span class="text-[8px] font-mono tracking-widest text-pink-500/70 uppercase group-hover/btn:text-pink-400 transition-colors">Server: Ready</span>
+                                        <span class="text-sm font-space font-bold text-white tracking-[0.2em] uppercase">Access Port</span>
+                                    </div>
+                                    <div class="absolute left-0 w-full h-[2px] bg-pink-400 shadow-[0_0_15px_#ec4899] animate-scanline pointer-events-none"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <p class="text-[9px] text-slate-700 uppercase tracking-[0.8em]">Built for 2026 &bull; Yafao Mabe Lamboe, S.Kom</p>
+    </section>
+
+    <section id="tech" class="py-32 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center gap-6 mb-20 justify-center" data-aos="zoom-in">
+                <div class="h-[1px] w-12 bg-indigo-500"></div>
+                <h3 class="text-center text-white font-space text-2xl font-bold tracking-widest uppercase">Technology Nodes</h3>
+                <div class="h-[1px] w-12 bg-indigo-500"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #6366f1;" data-aos="fade-up" data-aos-delay="0">
+                    <div class="text-indigo-400 text-4xl font-space font-black mb-2">PHP</div>
+                    <p class="text-[10px] font-mono tracking-widest text-slate-500">v8.4 / Laravel 12</p>
+                </div>
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #f59e0b;" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-amber-400 text-4xl font-space font-black mb-2">JS</div>
+                    <p class="text-[10px] font-mono tracking-widest text-slate-500">ES6+ / Node</p>
+                </div>
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #3b82f6;" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-blue-400 text-4xl font-space font-black mb-2">TS</div>
+                    <p class="text-[10px] font-mono tracking-widest text-slate-500">Type Safety</p>
+                </div>
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #06b6d4;" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-cyan-400 text-4xl font-space font-black mb-2">GO</div>
+                    <p class="text-[10px] font-mono tracking-widest text-slate-500">Concurrency</p>
+                </div>
+                
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #f97316;" data-aos="fade-up" data-aos-delay="0">
+                    <div class="text-orange-400 text-3xl font-space font-black mb-2">HTML</div>
+                    <p class="text-[10px] font-mono tracking-widest text-slate-500">DOM Struct</p>
+                </div>
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #38bdf8;" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-sky-400 text-3xl font-space font-black mb-2">T-CSS</div>
+                    <p class="text-[10px] font-mono tracking-widest text-slate-500">Styling</p>
+                </div>
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #818cf8;" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-indigo-400 text-3xl font-space font-black mb-2">SQL</div>
+                    <p class="text-[10px] font-mono tracking-widest text-slate-500">PostgreSQL</p>
+                </div>
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #2563eb;" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-blue-600 text-3xl font-space font-black mb-2">DKR</div>
+                    <p class="text-[10px] font-mono tracking-widest text-slate-500">Docker</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="relative py-20 text-center bg-[#030712] border-t border-white/5 overflow-hidden">
+        <div class="marquee-container top-1/2 -translate-y-1/2">
+            <span class="marquee-text font-space">YAFAO MABE LAMBOE YAFAO MABE LAMBOE</span>
+        </div>
+
+        <div class="relative z-10">
+            <div class="flex justify-center gap-12 mb-12">
+                <a href="https://www.linkedin.com/in/yafao-mabe-lamboe-6b829b292/" target="_blank" class="text-slate-500 hover:text-white transition tracking-[0.3em] font-space font-bold text-[10px] uppercase border-b border-transparent hover:border-white pb-1">LinkedIn</a>
+                <a href="https://github.com/Yafaooo" target="_blank" class="text-slate-500 hover:text-white transition tracking-[0.3em] font-space font-bold text-[10px] uppercase border-b border-transparent hover:border-white pb-1">GitHub</a>
+                <a href="https://www.instagram.com/yafaooo_" target="_blank" class="text-slate-500 hover:text-white transition tracking-[0.3em] font-space font-bold text-[10px] uppercase border-b border-transparent hover:border-white pb-1">Instagram</a>
+            </div>
+            <p class="text-[9px] text-slate-600 font-mono uppercase tracking-[0.8em]">System Core Built For 2026 &bull; Yafao Mabe Lamboe, S.Kom</p>
+        </div>
     </footer>
 
-    <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="toggleMusic()" id="musicBtn" class="bg-indigo-600/20 backdrop-blur-md border border-white/10 p-4 rounded-full hover:bg-indigo-500 transition-all group shadow-2xl">
+    <div class="fixed bottom-24 right-8 z-50">
+        <button onclick="toggleMusic()" id="musicBtn" class="w-10 h-10 rounded-full border border-white/20 bg-black/50 backdrop-blur-md flex items-center justify-center hover:bg-indigo-600 transition-colors group">
             <div id="musicIcon" class="text-white group-hover:scale-110 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>
             </div>
         </button>
-        <audio id="bgMusic" loop>
-            <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
-        </audio>
+        <audio id="bgMusic" loop><source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg"></audio>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
     <script>
-        AOS.init({ duration: 1000, once: false, mirror: true });
+        AOS.init({ duration: 1200, once: false, mirror: true, offset: 50 });
 
         var typed = new Typed('#typing-text', {
-            strings: ['Software Engineer', 'IT Educator', 'Full-stack Developer'],
-            typeSpeed: 60,
-            backSpeed: 40,
-            backDelay: 2000,
-            loop: true,
-            cursorChar: '_'
+            strings: ['SYSTEM_ENGINEER', 'BACKEND_ARCHITECT', 'FULL_STACK_DEV'],
+            typeSpeed: 50, backSpeed: 30, backDelay: 3000, loop: true, cursorChar: '█'
         });
 
         function toggleMusic() {
@@ -469,14 +537,65 @@
             const btn = document.getElementById('musicBtn');
             if (music.paused) {
                 music.play();
-                btn.classList.add('animate-pulse', 'bg-indigo-600/50');
+                btn.classList.add('animate-pulse', 'border-indigo-500');
             } else {
                 music.pause();
-                btn.classList.remove('animate-pulse', 'bg-indigo-600/50');
+                btn.classList.remove('animate-pulse', 'border-indigo-500');
             }
+        }
+
+        function moveNavIndicator(element) {
+            const indicator = document.getElementById('navIndicator');
+            indicator.style.width = element.offsetWidth + 'px';
+            indicator.style.left = element.offsetLeft + 'px';
+            indicator.style.opacity = '1';
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstLink = document.querySelector('.nav-link');
+            if(firstLink) moveNavIndicator(firstLink);
+            updateTime();
+        });
+
+        const spotlight = document.getElementById('global-spotlight');
+        document.addEventListener('mousemove', (e) => {
+            spotlight.style.setProperty('--mouse-x', `${e.clientX}px`);
+            spotlight.style.setProperty('--mouse-y', `${e.clientY}px`);
+        });
+
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;  
+                
+                card.style.setProperty('--card-mouse-x', `${x}px`);
+                card.style.setProperty('--card-mouse-y', `${y}px`);
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -8; 
+                const rotateY = ((x - centerX) / centerX) * 8;  
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+
+        function updateTime() {
+            const timeElement = document.getElementById('system-time');
+            setInterval(() => {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { 
+                    timeZone: 'Asia/Jakarta',
+                    hour12: false, hour: '2-digit', minute:'2-digit', second:'2-digit'
+                });
+                timeElement.innerText = `BTM | ${timeString} WIB`;
+            }, 1000);
         }
     </script>
 </body>
 </html>
-
-
