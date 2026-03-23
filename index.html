@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,62 +9,95 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;900&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --bg-color: #030712;
         }
 
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-color);
             color: #e2e8f0;
             overflow-x: hidden;
         }
 
-        .font-space { font-family: 'Space Grotesk', sans-serif; }
+        .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
 
         /* --- 1. GLOBAL SPOTLIGHT & NOISE --- */
         .noise-bg {
-            position: fixed; inset: 0; z-index: 9999;
-            pointer-events: none; opacity: 0.03;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.03;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         .spotlight {
-            position: fixed; inset: 0; pointer-events: none; z-index: 0;
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
             background: radial-gradient(circle 800px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(79, 70, 229, 0.08), transparent 40%);
             transition: background 0.1s ease;
         }
 
         /* --- 2. MAGNETIC MODERN NAVBAR --- */
         .modern-nav {
-            position: relative; display: flex; align-items: center;
+            position: relative;
+            display: flex;
+            align-items: center;
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 999px; padding: 4px;
+            border-radius: 999px;
+            padding: 4px;
         }
 
         .nav-link {
-            position: relative; padding: 10px 24px; font-size: 10px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 0.2em; color: #94a3b8;
-            transition: all 0.4s ease; z-index: 1; font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+            padding: 10px 24px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #94a3b8;
+            transition: all 0.4s ease;
+            z-index: 1;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        .nav-link:hover { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .nav-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
 
         .nav-indicator {
-            position: absolute; height: calc(100% - 8px);
+            position: absolute;
+            height: calc(100% - 8px);
             background: linear-gradient(90deg, rgba(79, 70, 229, 0.3), rgba(99, 102, 241, 0.1));
             border: 1px solid rgba(99, 102, 241, 0.5);
-            border-radius: 999px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 0; pointer-events: none; opacity: 0;
+            border-radius: 999px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0;
             box-shadow: inset 0 0 20px rgba(79, 70, 229, 0.2);
         }
 
-        .nav-hire-btn { background: #4f46e5; color: white !important; border-radius: 999px; margin-left: 8px; box-shadow: 0 0 20px rgba(79, 70, 229, 0.4); }
+        .nav-hire-btn {
+            background: #4f46e5;
+            color: white !important;
+            border-radius: 999px;
+            margin-left: 8px;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+        }
 
         /* --- 3. 3D TILT CARDS & GLOW BORDERS --- */
         .tilt-card {
@@ -73,147 +107,279 @@
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative; overflow: hidden;
+            position: relative;
+            overflow: hidden;
         }
 
         .tilt-card::before {
-            content: ""; position: absolute; inset: 0; border-radius: inherit;
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
             padding: 1px;
             background: radial-gradient(800px circle at var(--card-mouse-x, 0) var(--card-mouse-y, 0), rgba(255, 255, 255, 0.3), transparent 40%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude;
-            pointer-events: none; z-index: 1;
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 1;
         }
 
-        .card-content-3d { transform: translateZ(50px); }
-        .card-image-3d { transform: translateZ(30px); transition: all 0.5s ease; }
-        .tilt-card:hover .card-image-3d { transform: translateZ(40px) scale(1.05); }
+        .card-content-3d {
+            transform: translateZ(50px);
+        }
+
+        .card-image-3d {
+            transform: translateZ(30px);
+            transition: all 0.5s ease;
+        }
+
+        .tilt-card:hover .card-image-3d {
+            transform: translateZ(40px) scale(1.05);
+        }
 
         /* --- 4. ADVANCED BUTTON ANIMATION (LASER SCAN) --- */
         @keyframes scanline {
-            0% { top: 0%; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
+            0% {
+                top: 0%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
         }
+
         .animate-scanline {
             animation: scanline 1.5s linear infinite;
         }
 
         /* --- 5. ANIMATED BENTO GRID (TECH STACK) --- */
         .bento-box {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 24px; position: relative; overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
             transition: all 0.4s ease;
         }
-        .bento-box:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); }
-        
-        @keyframes rotate-border { 100% { transform: rotate(360deg); } }
-        .bento-glow::before {
-            content: ''; position: absolute; width: 200%; height: 200%;
-            top: -50%; left: -50%; z-index: -1;
-            background: conic-gradient(transparent, transparent, transparent, var(--accent-color));
-            animation: rotate-border 4s linear infinite; opacity: 0; transition: opacity 0.3s;
+
+        .bento-box:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
         }
-        .bento-box:hover .bento-glow::before { opacity: 1; }
+
+        @keyframes rotate-border {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .bento-glow::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            z-index: -1;
+            background: conic-gradient(transparent, transparent, transparent, var(--accent-color));
+            animation: rotate-border 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .bento-box:hover .bento-glow::before {
+            opacity: 1;
+        }
+
         .bento-glow::after {
-            content: ''; position: absolute; inset: 2px;
-            background: #050810; border-radius: 22px; z-index: -1;
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: #050810;
+            border-radius: 22px;
+            z-index: -1;
         }
 
         /* --- 6. MARQUEE TEXT --- */
-        .marquee-container { overflow: hidden; white-space: nowrap; width: 100vw; position: absolute; left: 0; opacity: 0.05; pointer-events: none; user-select: none; }
-        .marquee-text { display: inline-block; animation: marquee 30s linear infinite; font-size: 15vw; font-weight: 900; text-transform: uppercase; color: white; line-height: 1; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100vw;
+            position: absolute;
+            left: 0;
+            opacity: 0.05;
+            pointer-events: none;
+            user-select: none;
+        }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #030712; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
+        .marquee-text {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+            font-size: 15vw;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: white;
+            line-height: 1;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f46e5;
+        }
     </style>
 </head>
+
 <body class="relative">
 
     <div class="noise-bg"></div>
     <div class="spotlight" id="global-spotlight"></div>
-    <div class="fixed top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50 z-50"></div>
+    <div
+        class="fixed top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50 z-50">
+    </div>
 
-    <a href="https://wa.me/6282272463816" target="_blank" class="fixed bottom-8 left-8 z-[60] bg-indigo-600/80 backdrop-blur-md text-white p-4 rounded-full shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all hover:scale-110 active:scale-95 group border border-indigo-400/50">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.887-11.888 3.174 0 6.16 1.236 8.41 3.484 2.247 2.248 3.481 5.231 3.481 8.401 0 6.556-5.331 11.888-11.887 11.888-2.01 0-3.987-.506-5.741-1.465l-6.249 1.689zm5.989-4.759c1.636.973 3.239 1.417 4.881 1.417 5.469 0 9.918-4.448 9.918-9.917 0-2.657-1.035-5.151-2.914-7.03-1.876-1.877-4.372-2.913-7.004-2.913-5.469 0-9.918 4.45-9.918 9.917 0 1.838.513 3.635 1.485 5.189l-.955 3.486 3.507-.949z"/></svg>
-        <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-slate-900/90 backdrop-blur-sm border border-white/10 text-white text-[9px] px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-[0.2em] uppercase font-space">Establish Connection</span>
+    <a href="https://wa.me/6282272463816" target="_blank"
+        class="fixed bottom-8 left-8 z-[60] bg-indigo-600/80 backdrop-blur-md text-white p-4 rounded-full shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all hover:scale-110 active:scale-95 group border border-indigo-400/50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.887-11.888 3.174 0 6.16 1.236 8.41 3.484 2.247 2.248 3.481 5.231 3.481 8.401 0 6.556-5.331 11.888-11.887 11.888-2.01 0-3.987-.506-5.741-1.465l-6.249 1.689zm5.989-4.759c1.636.973 3.239 1.417 4.881 1.417 5.469 0 9.918-4.448 9.918-9.917 0-2.657-1.035-5.151-2.914-7.03-1.876-1.877-4.372-2.913-7.004-2.913-5.469 0-9.918 4.45-9.918 9.917 0 1.838.513 3.635 1.485 5.189l-.955 3.486 3.507-.949z" />
+        </svg>
+        <span
+            class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-slate-900/90 backdrop-blur-sm border border-white/10 text-white text-[9px] px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-[0.2em] uppercase font-space">Establish
+            Connection</span>
     </a>
 
-    <nav data-aos="fade-down" class="fixed w-full top-0 z-50 bg-[#030712]/50 backdrop-blur-2xl border-b border-white/[0.02]">
+    <nav data-aos="fade-down"
+        class="fixed w-full top-0 z-50 bg-[#030712]/50 backdrop-blur-2xl border-b border-white/[0.02]">
         <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-4 w-full md:w-auto justify-between">
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center font-space font-extrabold text-white text-xs">Y.</div>
+                    <div
+                        class="w-8 h-8 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center font-space font-extrabold text-white text-xs">
+                        Y.</div>
                     <div class="flex flex-col">
-                        <span class="text-[10px] font-space tracking-[0.4em] font-bold text-white uppercase">Yafao.Sys</span>
+                        <span
+                            class="text-[10px] font-space tracking-[0.4em] font-bold text-white uppercase">Yafao.Sys</span>
                         <div class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_#10b981]"></div>
+                            <div
+                                class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_#10b981]">
+                            </div>
                             <span class="text-[8px] text-slate-400 font-mono" id="system-time">LOADING...</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="hidden md:flex modern-nav" id="headerNav">
                 <div class="nav-indicator" id="navIndicator"></div>
                 <a href="#about" class="nav-link" onmouseover="moveNavIndicator(this)">Architecture</a>
                 <a href="#work" class="nav-link" onmouseover="moveNavIndicator(this)">Artifacts</a>
                 <a href="#tech" class="nav-link" onmouseover="moveNavIndicator(this)">Core Stack</a>
-                <a href="https://wa.me/6282272463816" class="nav-link nav-hire-btn" onmouseover="moveNavIndicator(this)">Init.Hire()</a>
+                <a href="https://wa.me/6282272463816" class="nav-link nav-hire-btn"
+                    onmouseover="moveNavIndicator(this)">Init.Hire()</a>
             </div>
         </div>
     </nav>
 
     <section class="relative min-h-screen flex items-center px-6 pt-32 pb-20 overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(79,70,229,0.05),transparent_60%)]"></div>
-        
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(79,70,229,0.05),transparent_60%)]">
+        </div>
+
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center relative z-10 w-full">
             <div class="lg:col-span-7 order-2 lg:order-1">
-                <div data-aos="fade-right" class="inline-flex items-center gap-3 px-4 py-2 border border-indigo-500/20 rounded-full bg-indigo-500/5 backdrop-blur-sm mb-8">
+                <div data-aos="fade-right"
+                    class="inline-flex items-center gap-3 px-4 py-2 border border-indigo-500/20 rounded-full bg-indigo-500/5 backdrop-blur-sm mb-8">
                     <span class="w-2 h-2 bg-indigo-500 rounded-full animate-ping"></span>
-                    <span class="text-indigo-300 text-[10px] font-space font-bold tracking-[0.3em] uppercase">S1 Software Engineering</span>
+                    <span class="text-indigo-300 text-[10px] font-space font-bold tracking-[0.3em] uppercase">S1
+                        Software Engineering</span>
                 </div>
-                
-                <h1 data-aos="fade-up" data-aos-delay="200" class="text-6xl md:text-8xl lg:text-[7rem] font-space font-black text-white mb-6 tracking-tighter leading-[0.9] mix-blend-screen">
-                    YAFAO <br> MABE <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500">LAMBOE.</span>
+
+                <h1 data-aos="fade-up" data-aos-delay="200"
+                    class="text-6xl md:text-8xl lg:text-[7rem] font-space font-black text-white mb-6 tracking-tighter leading-[0.9] mix-blend-screen">
+                    YAFAO <br> MABE <br> <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500">LAMBOE.</span>
                 </h1>
-                
-                <div data-aos="fade-up" data-aos-delay="300" class="text-lg md:text-2xl font-mono text-indigo-400/80 mb-8 h-8 flex items-center gap-2">
+
+                <div data-aos="fade-up" data-aos-delay="300"
+                    class="text-lg md:text-2xl font-mono text-indigo-400/80 mb-8 h-8 flex items-center gap-2">
                     <span class="text-slate-500">>></span> <span id="typing-text"></span>
                 </div>
-                
-                <p data-aos="fade-up" data-aos-delay="400" class="text-base md:text-lg text-slate-400 leading-relaxed mb-12 max-w-xl font-light">
-                    Mentransformasi kompleksitas logika menjadi arsitektur digital yang presisi. Spesialisasi dalam pengembangan <span class="text-white font-medium border-b border-white/20 pb-0.5">High-Performance Backend Systems</span> dan keamanan data tingkat enterprise.
+
+                <p data-aos="fade-up" data-aos-delay="400"
+                    class="text-base md:text-lg text-slate-400 leading-relaxed mb-12 max-w-xl font-light">
+                    Mentransformasi kompleksitas logika menjadi arsitektur digital yang presisi. Spesialisasi dalam
+                    pengembangan <span class="text-white font-medium border-b border-white/20 pb-0.5">High-Performance
+                        Backend Systems</span> dan keamanan data tingkat enterprise.
                 </p>
 
-                <div data-aos="fade-up" data-aos-delay="500" class="flex flex-wrap gap-8 items-center border-t border-white/5 pt-8">
+                <div data-aos="fade-up" data-aos-delay="500"
+                    class="flex flex-wrap gap-8 items-center border-t border-white/5 pt-8">
                     <div class="flex flex-col">
                         <span class="text-3xl font-space font-bold text-white">S.Kom</span>
-                        <span class="text-[9px] font-mono tracking-[0.3em] text-slate-500 mt-1 uppercase">Academic Degree</span>
+                        <span class="text-[9px] font-mono tracking-[0.3em] text-slate-500 mt-1 uppercase">Academic
+                            Degree</span>
                     </div>
                     <div class="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
                     <div class="flex flex-col">
-                        <span class="text-3xl font-space font-bold text-white flex items-baseline gap-1">12<span class="text-sm text-indigo-500 font-mono">.x</span></span>
-                        <span class="text-[9px] font-mono tracking-[0.3em] text-slate-500 mt-1 uppercase">Laravel Core</span>
+                        <span class="text-3xl font-space font-bold text-white flex items-baseline gap-1">12<span
+                                class="text-sm text-indigo-500 font-mono">.x</span></span>
+                        <span class="text-[9px] font-mono tracking-[0.3em] text-slate-500 mt-1 uppercase">Laravel
+                            Core</span>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end perspective-1000" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end perspective-1000"
+                data-aos="zoom-in" data-aos-duration="1500">
                 <div class="tilt-card w-72 h-72 md:w-[28rem] md:h-[28rem] rounded-full p-2 group">
-                    <div class="absolute inset-0 rounded-full border border-dashed border-indigo-500/30 animate-[spin_20s_linear_infinite]"></div>
-                    <div class="absolute inset-4 rounded-full border border-white/5 animate-[spin_15s_linear_infinite_reverse]"></div>
-                    
+                    <div
+                        class="absolute inset-0 rounded-full border border-dashed border-indigo-500/30 animate-[spin_20s_linear_infinite]">
+                    </div>
+                    <div
+                        class="absolute inset-4 rounded-full border border-white/5 animate-[spin_15s_linear_infinite_reverse]">
+                    </div>
+
                     <div class="relative w-full h-full rounded-full overflow-hidden bg-[#030712] card-image-3d">
-                        <img src="images/fotosaya.jpeg" alt="Yafao Mabe Lamboe" class="w-full h-full object-cover grayscale opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:grayscale-0 transition-all duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-80"></div>
-                        
-                        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-[8px] font-mono text-indigo-400 tracking-[0.5em] text-center w-full card-content-3d opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <img src="images/fotosaya.jpeg" alt="Yafao Mabe Lamboe"
+                            class="w-full h-full object-cover grayscale opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:grayscale-0 transition-all duration-700">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-80">
+                        </div>
+
+                        <div
+                            class="absolute bottom-10 left-1/2 -translate-x-1/2 text-[8px] font-mono text-indigo-400 tracking-[0.5em] text-center w-full card-content-3d opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             [ TARGET ACQUIRED ]<br>SYS.DEV.YAFAO
                         </div>
                     </div>
@@ -227,63 +393,84 @@
             <div class="flex items-center gap-6 mb-24" data-aos="fade-right">
                 <span class="text-5xl font-space font-bold text-white/5">01</span>
                 <div>
-                    <h3 class="text-indigo-400 font-space text-sm tracking-[0.4em] uppercase font-bold">System Architecture</h3>
+                    <h3 class="text-indigo-400 font-space text-sm tracking-[0.4em] uppercase font-bold">System
+                        Architecture</h3>
                     <div class="h-[1px] w-24 bg-gradient-to-r from-indigo-500 to-transparent mt-2"></div>
                 </div>
             </div>
-            
+
             <div class="grid lg:grid-cols-12 gap-12">
                 <div class="hidden lg:block lg:col-span-1 relative">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-full bg-white/5"></div>
-                    <div class="absolute top-[10%] left-1/2 -translate-x-1/2 w-3 h-3 bg-[#030712] border-2 border-indigo-500 rounded-full shadow-[0_0_15px_#4f46e5]"></div>
-                    <div class="absolute top-[50%] left-1/2 -translate-x-1/2 w-3 h-3 bg-[#030712] border-2 border-slate-700 rounded-full"></div>
+                    <div
+                        class="absolute top-[10%] left-1/2 -translate-x-1/2 w-3 h-3 bg-[#030712] border-2 border-indigo-500 rounded-full shadow-[0_0_15px_#4f46e5]">
+                    </div>
+                    <div
+                        class="absolute top-[50%] left-1/2 -translate-x-1/2 w-3 h-3 bg-[#030712] border-2 border-slate-700 rounded-full">
+                    </div>
                 </div>
 
                 <div class="lg:col-span-11 space-y-24">
                     <div class="tilt-card p-8 md:p-12 rounded-[2rem]" data-aos="fade-up">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 card-content-3d">
+                        <div
+                            class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 card-content-3d">
                             <div>
-                                <h4 class="text-3xl font-space font-bold text-white mb-2">Guru Informatika & Matematika</h4>
-                                <p class="text-indigo-400 font-mono text-xs tracking-widest uppercase">SMAK Kasih Karunia & SMP Swasta Teladan</p>
+                                <h4 class="text-3xl font-space font-bold text-white mb-2">Guru Informatika & Matematika
+                                </h4>
+                                <p class="text-indigo-400 font-mono text-xs tracking-widest uppercase">SMAK Kasih
+                                    Karunia & SMP Swasta Teladan</p>
                             </div>
                             <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
                                 <span class="text-slate-400 font-mono text-xs tracking-widest">2024 — 2026</span>
                             </div>
                         </div>
                         <p class="text-slate-400 leading-relaxed font-light card-content-3d max-w-3xl">
-                            Mentransfer algoritma pemikiran dan fondasi rekayasa perangkat lunak kepada generasi berikutnya. Fokus pada pembentukan logika pemrograman murni dan pengembangan prototipe solusi digital untuk ekosistem sekolah.
+                            Mentransfer algoritma pemikiran dan fondasi rekayasa perangkat lunak kepada generasi
+                            berikutnya. Fokus pada pembentukan logika pemrograman murni dan pengembangan prototipe
+                            solusi digital untuk ekosistem sekolah.
                         </p>
                     </div>
 
                     <div class="tilt-card p-8 md:p-12 rounded-[2rem] border-t-emerald-500/20" data-aos="fade-up">
                         <div class="mb-12 card-content-3d">
                             <h4 class="text-3xl font-space font-bold text-white mb-2">Implementation & UI/UX</h4>
-                            <p class="text-emerald-400 font-mono text-xs tracking-widest uppercase">Real-World Deployments</p>
+                            <p class="text-emerald-400 font-mono text-xs tracking-widest uppercase">Real-World
+                                Deployments</p>
                         </div>
-                        
+
                         <div class="grid md:grid-cols-3 gap-6 card-content-3d">
-                            <div class="group relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 hover:border-indigo-500/50 transition-colors aspect-[4/3]">
-                                <img src="images/screenshot-siakad.png" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
+                            <div
+                                class="group relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 hover:border-indigo-500/50 transition-colors aspect-[4/3]">
+                                <img src="images/screenshot-siakad.png"
+                                    class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent"></div>
                                 <div class="absolute bottom-4 left-4">
                                     <h5 class="text-white font-space font-bold">SIAKAD</h5>
-                                    <span class="text-[8px] font-mono text-indigo-400 tracking-widest uppercase">Academic Sys</span>
+                                    <span
+                                        class="text-[8px] font-mono text-indigo-400 tracking-widest uppercase">Academic
+                                        Sys</span>
                                 </div>
                             </div>
-                            <div class="group relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 hover:border-emerald-500/50 transition-colors aspect-[4/3]">
-                                <img src="images/screenshot-gereja.png" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
+                            <div
+                                class="group relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 hover:border-emerald-500/50 transition-colors aspect-[4/3]">
+                                <img src="images/screenshot-gereja.png"
+                                    class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent"></div>
                                 <div class="absolute bottom-4 left-4">
                                     <h5 class="text-white font-space font-bold">Database Jemaat</h5>
-                                    <span class="text-[8px] font-mono text-emerald-400 tracking-widest uppercase">Data Management</span>
+                                    <span class="text-[8px] font-mono text-emerald-400 tracking-widest uppercase">Data
+                                        Management</span>
                                 </div>
                             </div>
-                            <div class="group relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 hover:border-cyan-500/50 transition-colors aspect-[4/3]">
-                                <img src="images/resort-design.png" class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
+                            <div
+                                class="group relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 hover:border-cyan-500/50 transition-colors aspect-[4/3]">
+                                <img src="images/resort-design.png"
+                                    class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent"></div>
                                 <div class="absolute bottom-4 left-4">
                                     <h5 class="text-white font-space font-bold">Resort UI/UX</h5>
-                                    <span class="text-[8px] font-mono text-cyan-400 tracking-widest uppercase">Interface Design</span>
+                                    <span class="text-[8px] font-mono text-cyan-400 tracking-widest uppercase">Interface
+                                        Design</span>
                                 </div>
                             </div>
                         </div>
@@ -298,149 +485,261 @@
             <div class="flex flex-col mb-24" data-aos="fade-up">
                 <div class="flex items-center gap-6 mb-4">
                     <span class="text-5xl font-space font-bold text-white/5">02</span>
-                    <h3 class="text-indigo-400 font-space text-sm tracking-[0.4em] uppercase font-bold">Engineered Artifacts</h3>
+                    <h3 class="text-indigo-400 font-space text-sm tracking-[0.4em] uppercase font-bold">Engineered
+                        Artifacts</h3>
                 </div>
                 <h2 class="text-4xl md:text-6xl font-space font-black text-white tracking-tighter ml-16">
-                    SYSTEM <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400">DEPLOYMENTS.</span>
+                    SYSTEM <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400">DEPLOYMENTS.</span>
                 </h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="tilt-card lg:col-span-2 rounded-[2rem] p-2" style="--accent-color: #f59e0b;" data-aos="fade-up">
+
+                <div class="tilt-card lg:col-span-2 rounded-[2rem] p-2" style="--accent-color: #f59e0b;"
+                    data-aos="fade-up">
                     <div class="relative w-full h-[450px] rounded-[1.5rem] overflow-hidden group">
-                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-transparent pointer-events-none"></div>
-                        
-                        <div class="absolute top-6 left-6 w-6 h-6 border-t-2 border-l-2 border-amber-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div class="absolute top-6 right-6 w-6 h-6 border-t-2 border-r-2 border-amber-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        
-                        <div class="absolute top-1/2 left-8 -translate-y-1/2 flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700 card-content-3d pointer-events-none">
+                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1200&auto=format&fit=crop"
+                            class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-transparent pointer-events-none">
+                        </div>
+
+                        <div
+                            class="absolute top-6 left-6 w-6 h-6 border-t-2 border-l-2 border-amber-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute top-6 right-6 w-6 h-6 border-t-2 border-r-2 border-amber-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+
+                        <div
+                            class="absolute top-1/2 left-8 -translate-y-1/2 flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700 card-content-3d pointer-events-none">
                             <div class="w-16 h-[2px] bg-amber-500/80 mb-2 shadow-[0_0_10px_#f59e0b]"></div>
-                            <span class="text-[9px] font-mono text-amber-400 tracking-widest shadow-black drop-shadow-md">LAT: 1.1301 N</span>
-                            <span class="text-[9px] font-mono text-amber-400 tracking-widest shadow-black drop-shadow-md">LNG: 104.053 E</span>
-                            <span class="text-[9px] font-mono text-white tracking-widest animate-pulse mt-2 bg-amber-500/20 px-2 py-1 border border-amber-500/50 inline-block w-max">STATUS: OPTIMAL</span>
+                            <span
+                                class="text-[9px] font-mono text-amber-400 tracking-widest shadow-black drop-shadow-md">LAT:
+                                1.1301 N</span>
+                            <span
+                                class="text-[9px] font-mono text-amber-400 tracking-widest shadow-black drop-shadow-md">LNG:
+                                104.053 E</span>
+                            <span
+                                class="text-[9px] font-mono text-white tracking-widest animate-pulse mt-2 bg-amber-500/20 px-2 py-1 border border-amber-500/50 inline-block w-max">STATUS:
+                                OPTIMAL</span>
                         </div>
 
                         <div class="absolute inset-0 p-8 flex flex-col justify-end card-content-3d pointer-events-none">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 pointer-events-auto">
+                            <div
+                                class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 pointer-events-auto">
                                 <div>
                                     <div class="flex items-center gap-2 mb-3">
-                                        <div class="px-3 py-1 bg-amber-500/20 border border-amber-500/50 rounded-md text-[9px] font-mono text-amber-400 uppercase tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.2)]">v1.0.Logistics</div>
+                                        <div
+                                            class="px-3 py-1 bg-amber-500/20 border border-amber-500/50 rounded-md text-[9px] font-mono text-amber-400 uppercase tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                                            v1.0.Logistics</div>
                                     </div>
-                                    <h4 class="text-4xl font-space font-black text-white mb-2 tracking-tight">L.A.M.B.O.E <span class="text-amber-500 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">Express</span></h4>
-                                    <p class="text-slate-300 text-sm max-w-md font-light leading-relaxed">Arsitektur ekspedisi futuristik dengan Real-Time Logistics. Efisiensi tinggi untuk manajemen armada.</p>
+                                    <h4 class="text-4xl font-space font-black text-white mb-2 tracking-tight">
+                                        L.A.M.B.O.E <span
+                                            class="text-amber-500 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">Express</span>
+                                    </h4>
+                                    <p class="text-slate-300 text-sm max-w-md font-light leading-relaxed">Arsitektur
+                                        ekspedisi futuristik dengan Real-Time Logistics. Efisiensi tinggi untuk
+                                        manajemen armada.</p>
                                 </div>
-                                
-                                <a href="https://lamboe-ekspress.vercel.app/" target="_blank" class="relative overflow-hidden group/btn flex items-center gap-4 bg-[#030712]/80 border border-amber-500/40 backdrop-blur-xl rounded-2xl p-2 hover:bg-[#030712] hover:border-amber-400 transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)]">
-                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10 border border-amber-500/30 group-hover/btn:bg-amber-500 transition-colors duration-500 relative overflow-hidden">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-amber-500 group-hover/btn:text-[#030712] group-hover/btn:scale-110 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+
+                                <a href="https://lamboe-ekspress.vercel.app/" target="_blank"
+                                    class="relative overflow-hidden group/btn flex items-center gap-4 bg-[#030712]/80 border border-amber-500/40 backdrop-blur-xl rounded-2xl p-2 hover:bg-[#030712] hover:border-amber-400 transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)]">
+                                    <div
+                                        class="w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10 border border-amber-500/30 group-hover/btn:bg-amber-500 transition-colors duration-500 relative overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="w-5 h-5 text-amber-500 group-hover/btn:text-[#030712] group-hover/btn:scale-110 transition-all duration-500"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
                                     </div>
                                     <div class="flex flex-col pr-8">
-                                        <span class="text-[8px] font-mono tracking-widest text-amber-500/70 uppercase group-hover/btn:text-amber-400 transition-colors">Protocol: Active</span>
-                                        <span class="text-sm font-space font-bold text-white tracking-[0.2em] uppercase">Init Link</span>
+                                        <span
+                                            class="text-[8px] font-mono tracking-widest text-amber-500/70 uppercase group-hover/btn:text-amber-400 transition-colors">Protocol:
+                                            Active</span>
+                                        <span
+                                            class="text-sm font-space font-bold text-white tracking-[0.2em] uppercase">Init
+                                            Link</span>
                                     </div>
-                                    <div class="absolute left-0 w-full h-[2px] bg-amber-400 shadow-[0_0_15px_#f59e0b] animate-scanline pointer-events-none"></div>
+                                    <div
+                                        class="absolute left-0 w-full h-[2px] bg-amber-400 shadow-[0_0_15px_#f59e0b] animate-scanline pointer-events-none">
+                                    </div>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="tilt-card lg:col-span-1 rounded-[2rem] p-2" style="--accent-color: #3b82f6;" data-aos="fade-up" data-aos-delay="100">
+                <div class="tilt-card lg:col-span-1 rounded-[2rem] p-2" style="--accent-color: #3b82f6;"
+                    data-aos="fade-up" data-aos-delay="100">
                     <div class="relative w-full h-[450px] rounded-[1.5rem] overflow-hidden group">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/60 to-transparent"></div>
-                        
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop"
+                            class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/60 to-transparent">
+                        </div>
+
                         <div class="absolute inset-0 p-8 flex flex-col justify-end card-content-3d pointer-events-none">
                             <div class="flex flex-col gap-4 pointer-events-auto">
                                 <div>
                                     <div class="flex items-center gap-2 mb-3">
-                                        <div class="px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded text-[8px] font-mono text-blue-400 uppercase tracking-widest">Neural.API</div>
+                                        <div
+                                            class="px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded text-[8px] font-mono text-blue-400 uppercase tracking-widest">
+                                            Neural.API</div>
                                     </div>
                                     <h4 class="text-2xl font-space font-black text-white mb-2">Gemini Chat</h4>
-                                    <p class="text-slate-300 text-xs font-light leading-relaxed mb-2">Implementasi LLM canggih untuk asisten virtual via arsitektur API.</p>
+                                    <p class="text-slate-300 text-xs font-light leading-relaxed mb-2">Implementasi LLM
+                                        canggih untuk asisten virtual via arsitektur API.</p>
                                 </div>
-                                
-                                <a href="https://projectfinal-avpn-ancy.vercel.app/" target="_blank" class="relative overflow-hidden group/btn flex items-center justify-between bg-[#030712]/80 border border-blue-500/40 backdrop-blur-xl rounded-xl p-2 hover:bg-[#030712] hover:border-blue-400 transition-all duration-500 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] w-full">
+
+                                <a href="https://projectfinal-avpn-ancy.vercel.app/" target="_blank"
+                                    class="relative overflow-hidden group/btn flex items-center justify-between bg-[#030712]/80 border border-blue-500/40 backdrop-blur-xl rounded-xl p-2 hover:bg-[#030712] hover:border-blue-400 transition-all duration-500 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] w-full">
                                     <div class="flex flex-col pl-3">
-                                        <span class="text-[8px] font-mono tracking-widest text-blue-500/70 uppercase group-hover/btn:text-blue-400 transition-colors">Port: 8080</span>
-                                        <span class="text-xs font-space font-bold text-white tracking-[0.2em] uppercase">Access Node</span>
+                                        <span
+                                            class="text-[8px] font-mono tracking-widest text-blue-500/70 uppercase group-hover/btn:text-blue-400 transition-colors">Port:
+                                            8080</span>
+                                        <span
+                                            class="text-xs font-space font-bold text-white tracking-[0.2em] uppercase">Access
+                                            Node</span>
                                     </div>
-                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-blue-500/10 border border-blue-500/30 group-hover/btn:bg-blue-500 transition-colors duration-500 relative overflow-hidden">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-500 group-hover/btn:text-[#030712] group-hover/btn:scale-110 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                    <div
+                                        class="w-10 h-10 rounded-lg flex items-center justify-center bg-blue-500/10 border border-blue-500/30 group-hover/btn:bg-blue-500 transition-colors duration-500 relative overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="w-4 h-4 text-blue-500 group-hover/btn:text-[#030712] group-hover/btn:scale-110 transition-all duration-500"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
                                     </div>
-                                    <div class="absolute left-0 w-full h-[2px] bg-blue-400 shadow-[0_0_15px_#3b82f6] animate-scanline pointer-events-none"></div>
+                                    <div
+                                        class="absolute left-0 w-full h-[2px] bg-blue-400 shadow-[0_0_15px_#3b82f6] animate-scanline pointer-events-none">
+                                    </div>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="tilt-card lg:col-span-1 rounded-[2rem] p-2" style="--accent-color: #14b8a6;" data-aos="fade-up">
+                <div class="tilt-card lg:col-span-1 rounded-[2rem] p-2" style="--accent-color: #14b8a6;"
+                    data-aos="fade-up">
                     <div class="relative w-full h-[450px] rounded-[1.5rem] overflow-hidden group">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/60 to-transparent"></div>
-                        
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop"
+                            class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/60 to-transparent">
+                        </div>
+
                         <div class="absolute inset-0 p-8 flex flex-col justify-end card-content-3d pointer-events-none">
                             <div class="flex flex-col gap-4 pointer-events-auto">
                                 <div>
                                     <div class="flex items-center gap-2 mb-3">
-                                        <div class="px-2 py-1 bg-teal-500/20 border border-teal-500/30 rounded text-[8px] font-mono text-teal-400 uppercase tracking-widest">Edu.Tech</div>
+                                        <div
+                                            class="px-2 py-1 bg-teal-500/20 border border-teal-500/30 rounded text-[8px] font-mono text-teal-400 uppercase tracking-widest">
+                                            Edu.Tech</div>
                                     </div>
-                                    <h4 class="text-2xl font-space font-black text-white mb-2">CBT<span class="text-teal-500">.System</span></h4>
-                                    <p class="text-slate-300 text-xs font-light leading-relaxed mb-2">Platform Ujian Berbasis Komputer dengan manajemen sesi real-time.</p>
+                                    <h4 class="text-2xl font-space font-black text-white mb-2">CBT<span
+                                            class="text-teal-500">.System</span></h4>
+                                    <p class="text-slate-300 text-xs font-light leading-relaxed mb-2">Platform Ujian
+                                        Berbasis Komputer dengan manajemen sesi real-time.</p>
                                 </div>
-                                
-                                <a href="https://cbt-app-yafao.vercel.app/" target="_blank" class="relative overflow-hidden group/btn flex items-center justify-between bg-[#030712]/80 border border-teal-500/40 backdrop-blur-xl rounded-xl p-2 hover:bg-[#030712] hover:border-teal-400 transition-all duration-500 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(20,184,166,0.3)] w-full">
+
+                                <a href="https://cbt-app-yafao.vercel.app/" target="_blank"
+                                    class="relative overflow-hidden group/btn flex items-center justify-between bg-[#030712]/80 border border-teal-500/40 backdrop-blur-xl rounded-xl p-2 hover:bg-[#030712] hover:border-teal-400 transition-all duration-500 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(20,184,166,0.3)] w-full">
                                     <div class="flex flex-col pl-3">
-                                        <span class="text-[8px] font-mono tracking-widest text-teal-500/70 uppercase group-hover/btn:text-teal-400 transition-colors">Session: Live</span>
-                                        <span class="text-xs font-space font-bold text-white tracking-[0.2em] uppercase">Init Exam</span>
+                                        <span
+                                            class="text-[8px] font-mono tracking-widest text-teal-500/70 uppercase group-hover/btn:text-teal-400 transition-colors">Session:
+                                            Live</span>
+                                        <span
+                                            class="text-xs font-space font-bold text-white tracking-[0.2em] uppercase">Init
+                                            Exam</span>
                                     </div>
-                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-teal-500/10 border border-teal-500/30 group-hover/btn:bg-teal-500 transition-colors duration-500 relative overflow-hidden">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-teal-500 group-hover/btn:text-[#030712] group-hover/btn:scale-110 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    <div
+                                        class="w-10 h-10 rounded-lg flex items-center justify-center bg-teal-500/10 border border-teal-500/30 group-hover/btn:bg-teal-500 transition-colors duration-500 relative overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="w-4 h-4 text-teal-500 group-hover/btn:text-[#030712] group-hover/btn:scale-110 transition-all duration-500"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
                                     </div>
-                                    <div class="absolute left-0 w-full h-[2px] bg-teal-400 shadow-[0_0_15px_#14b8a6] animate-scanline pointer-events-none"></div>
+                                    <div
+                                        class="absolute left-0 w-full h-[2px] bg-teal-400 shadow-[0_0_15px_#14b8a6] animate-scanline pointer-events-none">
+                                    </div>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="tilt-card lg:col-span-2 rounded-[2rem] p-2" style="--accent-color: #ec4899;" data-aos="fade-up" data-aos-delay="100">
+                <div class="tilt-card lg:col-span-2 rounded-[2rem] p-2" style="--accent-color: #ec4899;"
+                    data-aos="fade-up" data-aos-delay="100">
                     <div class="relative w-full h-[450px] rounded-[1.5rem] overflow-hidden group">
-                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-transparent pointer-events-none"></div>
-                        
-                        <div class="absolute bottom-6 left-6 w-6 h-6 border-b-2 border-l-2 border-pink-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div class="absolute bottom-6 right-6 w-6 h-6 border-b-2 border-r-2 border-pink-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1200&auto=format&fit=crop"
+                            class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition duration-700 group-hover:scale-105 card-image-3d">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-transparent pointer-events-none">
+                        </div>
 
-                        <div class="absolute top-1/2 right-8 -translate-y-1/2 flex flex-col items-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700 card-content-3d pointer-events-none">
+                        <div
+                            class="absolute bottom-6 left-6 w-6 h-6 border-b-2 border-l-2 border-pink-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute bottom-6 right-6 w-6 h-6 border-b-2 border-r-2 border-pink-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+
+                        <div
+                            class="absolute top-1/2 right-8 -translate-y-1/2 flex flex-col items-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700 card-content-3d pointer-events-none">
                             <div class="w-16 h-[2px] bg-pink-500/80 mb-2 shadow-[0_0_10px_#ec4899]"></div>
-                            <span class="text-[9px] font-mono text-pink-400 tracking-widest shadow-black drop-shadow-md">NUXT.JS CORE</span>
-                            <span class="text-[9px] font-mono text-pink-400 tracking-widest shadow-black drop-shadow-md">ROUTER: STABLE</span>
-                            <span class="text-[9px] font-mono text-white tracking-widest animate-pulse mt-2 bg-pink-500/20 px-2 py-1 border border-pink-500/50 inline-block w-max">SSR: ACTIVE</span>
+                            <span
+                                class="text-[9px] font-mono text-pink-400 tracking-widest shadow-black drop-shadow-md">NUXT.JS
+                                CORE</span>
+                            <span
+                                class="text-[9px] font-mono text-pink-400 tracking-widest shadow-black drop-shadow-md">ROUTER:
+                                STABLE</span>
+                            <span
+                                class="text-[9px] font-mono text-white tracking-widest animate-pulse mt-2 bg-pink-500/20 px-2 py-1 border border-pink-500/50 inline-block w-max">SSR:
+                                ACTIVE</span>
                         </div>
 
                         <div class="absolute inset-0 p-8 flex flex-col justify-end card-content-3d pointer-events-none">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 pointer-events-auto">
+                            <div
+                                class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 pointer-events-auto">
                                 <div>
                                     <div class="flex items-center gap-2 mb-3">
-                                        <div class="px-3 py-1 bg-pink-500/20 border border-pink-500/50 rounded-md text-[9px] font-mono text-pink-400 uppercase tracking-widest shadow-[0_0_15px_rgba(236,72,153,0.2)]">Nuxt.Architecture</div>
+                                        <div
+                                            class="px-3 py-1 bg-pink-500/20 border border-pink-500/50 rounded-md text-[9px] font-mono text-pink-400 uppercase tracking-widest shadow-[0_0_15px_rgba(236,72,153,0.2)]">
+                                            Nuxt.Architecture</div>
                                     </div>
-                                    <h4 class="text-4xl font-space font-black text-white mb-2 tracking-tight">AA's <span class="text-pink-500 drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]">Booking</span></h4>
-                                    <p class="text-slate-300 text-sm max-w-md font-light leading-relaxed">Sistem reservasi dan booking cerdas berkinerja tinggi yang dibangun dengan optimasi Vue/Nuxt.js.</p>
+                                    <h4 class="text-4xl font-space font-black text-white mb-2 tracking-tight">AA's <span
+                                            class="text-pink-500 drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]">Booking</span>
+                                    </h4>
+                                    <p class="text-slate-300 text-sm max-w-md font-light leading-relaxed">Sistem
+                                        reservasi dan booking cerdas berkinerja tinggi yang dibangun dengan optimasi
+                                        Vue/Nuxt.js.</p>
                                 </div>
-                                
-                                <a href="https://aa-s-booking-nuxt.vercel.app/" target="_blank" class="relative overflow-hidden group/btn flex items-center gap-4 bg-[#030712]/80 border border-pink-500/40 backdrop-blur-xl rounded-2xl p-2 hover:bg-[#030712] hover:border-pink-400 transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(236,72,153,0.3)]">
-                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-pink-500/10 border border-pink-500/30 group-hover/btn:bg-pink-500 transition-colors duration-500 relative overflow-hidden">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-pink-500 group-hover/btn:text-[#030712] group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+
+                                <a href="https://aa-s-booking-nuxt.vercel.app/" target="_blank"
+                                    class="relative overflow-hidden group/btn flex items-center gap-4 bg-[#030712]/80 border border-pink-500/40 backdrop-blur-xl rounded-2xl p-2 hover:bg-[#030712] hover:border-pink-400 transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(236,72,153,0.3)]">
+                                    <div
+                                        class="w-12 h-12 rounded-xl flex items-center justify-center bg-pink-500/10 border border-pink-500/30 group-hover/btn:bg-pink-500 transition-colors duration-500 relative overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="w-5 h-5 text-pink-500 group-hover/btn:text-[#030712] group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 transition-all duration-500"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                        </svg>
                                     </div>
                                     <div class="flex flex-col pr-8">
-                                        <span class="text-[8px] font-mono tracking-widest text-pink-500/70 uppercase group-hover/btn:text-pink-400 transition-colors">Server: Ready</span>
-                                        <span class="text-sm font-space font-bold text-white tracking-[0.2em] uppercase">Access Port</span>
+                                        <span
+                                            class="text-[8px] font-mono tracking-widest text-pink-500/70 uppercase group-hover/btn:text-pink-400 transition-colors">Server:
+                                            Ready</span>
+                                        <span
+                                            class="text-sm font-space font-bold text-white tracking-[0.2em] uppercase">Access
+                                            Port</span>
                                     </div>
-                                    <div class="absolute left-0 w-full h-[2px] bg-pink-400 shadow-[0_0_15px_#ec4899] animate-scanline pointer-events-none"></div>
+                                    <div
+                                        class="absolute left-0 w-full h-[2px] bg-pink-400 shadow-[0_0_15px_#ec4899] animate-scanline pointer-events-none">
+                                    </div>
                                 </a>
                             </div>
                         </div>
@@ -455,41 +754,50 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex items-center gap-6 mb-20 justify-center" data-aos="zoom-in">
                 <div class="h-[1px] w-12 bg-indigo-500"></div>
-                <h3 class="text-center text-white font-space text-2xl font-bold tracking-widest uppercase">Technology Nodes</h3>
+                <h3 class="text-center text-white font-space text-2xl font-bold tracking-widest uppercase">Technology
+                    Nodes</h3>
                 <div class="h-[1px] w-12 bg-indigo-500"></div>
             </div>
-            
+
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #6366f1;" data-aos="fade-up" data-aos-delay="0">
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center"
+                    style="--accent-color: #6366f1;" data-aos="fade-up" data-aos-delay="0">
                     <div class="text-indigo-400 text-4xl font-space font-black mb-2">PHP</div>
                     <p class="text-[10px] font-mono tracking-widest text-slate-500">v8.4 / Laravel 12</p>
                 </div>
-                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #f59e0b;" data-aos="fade-up" data-aos-delay="100">
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center"
+                    style="--accent-color: #f59e0b;" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-amber-400 text-4xl font-space font-black mb-2">JS</div>
                     <p class="text-[10px] font-mono tracking-widest text-slate-500">ES6+ / Node</p>
                 </div>
-                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #3b82f6;" data-aos="fade-up" data-aos-delay="200">
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center"
+                    style="--accent-color: #3b82f6;" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-blue-400 text-4xl font-space font-black mb-2">TS</div>
                     <p class="text-[10px] font-mono tracking-widest text-slate-500">Type Safety</p>
                 </div>
-                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #06b6d4;" data-aos="fade-up" data-aos-delay="300">
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center"
+                    style="--accent-color: #06b6d4;" data-aos="fade-up" data-aos-delay="300">
                     <div class="text-cyan-400 text-4xl font-space font-black mb-2">GO</div>
                     <p class="text-[10px] font-mono tracking-widest text-slate-500">Concurrency</p>
                 </div>
-                
-                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #f97316;" data-aos="fade-up" data-aos-delay="0">
+
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center"
+                    style="--accent-color: #f97316;" data-aos="fade-up" data-aos-delay="0">
                     <div class="text-orange-400 text-3xl font-space font-black mb-2">HTML</div>
                     <p class="text-[10px] font-mono tracking-widest text-slate-500">DOM Struct</p>
                 </div>
-                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #38bdf8;" data-aos="fade-up" data-aos-delay="100">
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center"
+                    style="--accent-color: #38bdf8;" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-sky-400 text-3xl font-space font-black mb-2">T-CSS</div>
                     <p class="text-[10px] font-mono tracking-widest text-slate-500">Styling</p>
                 </div>
-                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #818cf8;" data-aos="fade-up" data-aos-delay="200">
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center"
+                    style="--accent-color: #818cf8;" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-indigo-400 text-3xl font-space font-black mb-2">SQL</div>
                     <p class="text-[10px] font-mono tracking-widest text-slate-500">PostgreSQL</p>
                 </div>
-                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center" style="--accent-color: #2563eb;" data-aos="fade-up" data-aos-delay="300">
+                <div class="bento-box bento-glow lg:col-span-2 aspect-square p-6 flex flex-col justify-center items-center text-center"
+                    style="--accent-color: #2563eb;" data-aos="fade-up" data-aos-delay="300">
                     <div class="text-blue-600 text-3xl font-space font-black mb-2">DKR</div>
                     <p class="text-[10px] font-mono tracking-widest text-slate-500">Docker</p>
                 </div>
@@ -504,26 +812,37 @@
 
         <div class="relative z-10">
             <div class="flex justify-center gap-12 mb-12">
-                <a href="https://www.linkedin.com/in/yafao-mabe-lamboe-6b829b292/" target="_blank" class="text-slate-500 hover:text-white transition tracking-[0.3em] font-space font-bold text-[10px] uppercase border-b border-transparent hover:border-white pb-1">LinkedIn</a>
-                <a href="https://github.com/Yafaooo" target="_blank" class="text-slate-500 hover:text-white transition tracking-[0.3em] font-space font-bold text-[10px] uppercase border-b border-transparent hover:border-white pb-1">GitHub</a>
-                <a href="https://www.instagram.com/yafaooo_" target="_blank" class="text-slate-500 hover:text-white transition tracking-[0.3em] font-space font-bold text-[10px] uppercase border-b border-transparent hover:border-white pb-1">Instagram</a>
+                <a href="https://www.linkedin.com/in/yafao-mabe-lamboe-6b829b292/" target="_blank"
+                    class="text-slate-500 hover:text-white transition tracking-[0.3em] font-space font-bold text-[10px] uppercase border-b border-transparent hover:border-white pb-1">LinkedIn</a>
+                <a href="https://github.com/Yafaooo" target="_blank"
+                    class="text-slate-500 hover:text-white transition tracking-[0.3em] font-space font-bold text-[10px] uppercase border-b border-transparent hover:border-white pb-1">GitHub</a>
+                <a href="https://www.instagram.com/yafaooo_" target="_blank"
+                    class="text-slate-500 hover:text-white transition tracking-[0.3em] font-space font-bold text-[10px] uppercase border-b border-transparent hover:border-white pb-1">Instagram</a>
             </div>
-            <p class="text-[9px] text-slate-600 font-mono uppercase tracking-[0.8em]">System Core Built For 2026 &bull; Yafao Mabe Lamboe, S.Kom</p>
+            <p class="text-[9px] text-slate-600 font-mono uppercase tracking-[0.8em]">System Core Built For 2026 &bull;
+                Yafao Mabe Lamboe, S.Kom</p>
         </div>
     </footer>
 
     <div class="fixed bottom-24 right-8 z-50">
-        <button onclick="toggleMusic()" id="musicBtn" class="w-10 h-10 rounded-full border border-white/20 bg-black/50 backdrop-blur-md flex items-center justify-center hover:bg-indigo-600 transition-colors group">
+        <button onclick="toggleMusic()" id="musicBtn"
+            class="w-10 h-10 rounded-full border border-white/20 bg-black/50 backdrop-blur-md flex items-center justify-center hover:bg-indigo-600 transition-colors group">
             <div id="musicIcon" class="text-white group-hover:scale-110 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                </svg>
             </div>
         </button>
-        <audio id="bgMusic" loop><source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg"></audio>
+        <audio id="bgMusic" loop preload="auto">
+            <source src="sound.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    
+
     <script>
         AOS.init({ duration: 1200, once: false, mirror: true, offset: 50 });
 
@@ -552,8 +871,26 @@
         }
         document.addEventListener('DOMContentLoaded', () => {
             const firstLink = document.querySelector('.nav-link');
-            if(firstLink) moveNavIndicator(firstLink);
+            if (firstLink) moveNavIndicator(firstLink);
             updateTime();
+
+            // Auto-play logic: attempt to play on first interaction
+            const music = document.getElementById('bgMusic');
+            const musicPlayHandler = () => {
+                music.play().then(() => {
+                    const btn = document.getElementById('musicBtn');
+                    btn.classList.add('animate-pulse', 'border-indigo-500');
+                    document.removeEventListener('click', musicPlayHandler);
+                    document.removeEventListener('scroll', musicPlayHandler);
+                    document.removeEventListener('keydown', musicPlayHandler);
+                }).catch(error => {
+                    console.log("Autoplay blocked, waiting for interaction.");
+                });
+            };
+
+            document.addEventListener('click', musicPlayHandler);
+            document.addEventListener('scroll', musicPlayHandler);
+            document.addEventListener('keydown', musicPlayHandler);
         });
 
         const spotlight = document.getElementById('global-spotlight');
@@ -566,16 +903,16 @@
         tiltCards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; 
-                const y = e.clientY - rect.top;  
-                
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
                 card.style.setProperty('--card-mouse-x', `${x}px`);
                 card.style.setProperty('--card-mouse-y', `${y}px`);
 
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -8; 
-                const rotateY = ((x - centerX) / centerX) * 8;  
+                const rotateX = ((y - centerY) / centerY) * -8;
+                const rotateY = ((x - centerX) / centerX) * 8;
 
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
             });
@@ -589,13 +926,14 @@
             const timeElement = document.getElementById('system-time');
             setInterval(() => {
                 const now = new Date();
-                const timeString = now.toLocaleTimeString('en-US', { 
+                const timeString = now.toLocaleTimeString('en-US', {
                     timeZone: 'Asia/Jakarta',
-                    hour12: false, hour: '2-digit', minute:'2-digit', second:'2-digit'
+                    hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit'
                 });
                 timeElement.innerText = `BTM | ${timeString} WIB`;
             }, 1000);
         }
     </script>
 </body>
+
 </html>
