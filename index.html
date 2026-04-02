@@ -211,6 +211,29 @@
             z-index: -1;
         }
 
+        /* --- 7. ULTRA PREMIUM CERTIFICATE ANIMATIONS --- */
+        .rotateX-90 {
+            transform: rotateX(80deg) translateY(-200px) scale(0.6);
+        }
+        .lightbox-active {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+        .lightbox-active #lightbox-card {
+            transform: rotateX(0deg) translateY(0) scale(1);
+            opacity: 1;
+        }
+        @keyframes scan-vertical {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+        .scanner-line {
+            animation: scan-vertical 3s linear infinite;
+        }
+        .cert-card {
+            cursor: pointer;
+        }
+
         /* --- 6. MARQUEE TEXT --- */
         .marquee-container {
             overflow: hidden;
@@ -306,6 +329,7 @@
                 <div class="nav-indicator" id="navIndicator"></div>
                 <a href="#about" class="nav-link" onmouseover="moveNavIndicator(this)">Architecture</a>
                 <a href="#work" class="nav-link" onmouseover="moveNavIndicator(this)">Artifacts</a>
+                <a href="#certificates" class="nav-link" onmouseover="moveNavIndicator(this)">Credentials</a>
                 <a href="#tech" class="nav-link" onmouseover="moveNavIndicator(this)">Core Stack</a>
                 <a href="https://wa.me/6282272463816" class="nav-link nav-hire-btn"
                     onmouseover="moveNavIndicator(this)">Init.Hire()</a>
@@ -750,6 +774,111 @@
         </div>
     </section>
 
+    <!-- NEW CERTIFICATES SECTION -->
+    <section id="certificates" class="py-32 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col mb-24" data-aos="fade-up">
+                <div class="flex items-center gap-6 mb-4">
+                    <span class="text-5xl font-space font-bold text-white/5">03</span>
+                    <h3 class="text-indigo-400 font-space text-sm tracking-[0.4em] uppercase font-bold">Verified Credentials</h3>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-space font-black text-white tracking-tighter ml-16">
+                    PROFESSIONAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">CERTIFICATIONS.</span>
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
+                <!-- Cert 1 -->
+                <div class="tilt-card rounded-[2rem] p-1 w-full cert-card group bento-glow" style="--accent-color: #f43f5e;" data-aos="fade-up" onclick="openLightbox('images/cert-hacktiv8.jpg')">
+                    <div class="relative w-full aspect-[4/3] rounded-[1.8rem] overflow-hidden bg-black/50">
+                        <img src="images/cert-hacktiv8.jpg" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop';" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 card-image-3d group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/40 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <div class="w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm flex items-center justify-center shadow-[0_0_20px_rgba(244,63,94,0.5)] transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-6 right-6 card-content-3d pointer-events-none">
+                            <h4 class="text-xl font-space font-bold text-white tracking-tight mb-1">Maju Bareng AI</h4>
+                            <p class="text-[10px] font-mono text-rose-400 tracking-widest uppercase">Hacktiv8</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="tilt-card rounded-[2rem] p-1 w-full cert-card group bento-glow" style="--accent-color: #eab308;" data-aos="fade-up" data-aos-delay="100" onclick="openLightbox('images/cert-eduwork1.jpg')">
+                    <div class="relative w-full aspect-[4/3] rounded-[1.8rem] overflow-hidden bg-black/50">
+                        <img src="images/cert-eduwork1.jpg" onerror="this.src='https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=800&auto=format&fit=crop';" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 card-image-3d group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/40 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <div class="w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm flex items-center justify-center shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-6 right-6 card-content-3d pointer-events-none">
+                            <h4 class="text-xl font-space font-bold text-white tracking-tight mb-1">Interview Hack Lulus!</h4>
+                            <p class="text-[10px] font-mono text-yellow-400 tracking-widest uppercase">Eduwork</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="tilt-card rounded-[2rem] p-1 w-full cert-card group bento-glow" style="--accent-color: #06b6d4;" data-aos="fade-up" data-aos-delay="200" onclick="openLightbox('images/cert-eduwork2.jpg')">
+                    <div class="relative w-full aspect-[4/3] rounded-[1.8rem] overflow-hidden bg-black/50">
+                        <img src="images/cert-eduwork2.jpg" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop';" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 card-image-3d group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/40 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <div class="w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-6 right-6 card-content-3d pointer-events-none">
+                            <h4 class="text-xl font-space font-bold text-white tracking-tight mb-1">Portofolio E-Course</h4>
+                            <p class="text-[10px] font-mono text-cyan-400 tracking-widest uppercase">Eduwork</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 centered -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 lg:max-w-4xl lg:mx-auto">
+                <!-- Cert 4 -->
+                <div class="tilt-card rounded-[2rem] p-1 w-full cert-card group bento-glow" style="--accent-color: #3b82f6;" data-aos="fade-up" onclick="openLightbox('images/cert-kampusmengajar.png')">
+                    <div class="relative w-full aspect-[4/3] rounded-[1.8rem] overflow-hidden bg-black/50">
+                        <img src="images/cert-kampusmengajar.png" onerror="this.src='https://images.unsplash.com/photo-1546410531-ea4cea1a6865?q=80&w=800&auto=format&fit=crop';" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 card-image-3d group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/40 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <div class="w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-6 right-6 card-content-3d pointer-events-none">
+                            <h4 class="text-xl font-space font-bold text-white tracking-tight mb-1">Kampus Mengajar 7</h4>
+                            <p class="text-[10px] font-mono text-blue-400 tracking-widest uppercase">Kemdikbudristek</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 5 -->
+                <div class="tilt-card rounded-[2rem] p-1 w-full cert-card group bento-glow" style="--accent-color: #10b981;" data-aos="fade-up" data-aos-delay="100" onclick="openLightbox('images/cert-yhr.png')">
+                    <div class="relative w-full aspect-[4/3] rounded-[1.8rem] overflow-hidden bg-black/50">
+                        <img src="images/cert-yhr.png" onerror="this.src='https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=800&auto=format&fit=crop';" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 card-image-3d group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/40 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <div class="w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-6 left-6 right-6 card-content-3d pointer-events-none">
+                            <h4 class="text-xl font-space font-bold text-white tracking-tight mb-1">Human Rights Curriculum</h4>
+                            <p class="text-[10px] font-mono text-emerald-400 tracking-widest uppercase">YHRI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="tech" class="py-32 px-6 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="flex items-center gap-6 mb-20 justify-center" data-aos="zoom-in">
@@ -933,6 +1062,49 @@
                 timeElement.innerText = `BTM | ${timeString} WIB`;
             }, 1000);
         }
+    </script>
+    <!-- ULTRA PREMIUM LIGHTBOX -->
+    <div id="cert-lightbox" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-700">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-3xl transition-opacity" onclick="closeLightbox()"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.15),transparent_50%)] pointer-events-none"></div>
+        
+        <div class="relative w-[90vw] max-w-5xl aspect-auto max-h-[90vh] perspective-1000 flex justify-center items-center">
+            <div id="lightbox-card" class="relative w-auto h-auto max-w-full max-h-[90vh] transform-gpu rotateX-90 opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] rounded-2xl p-2 bg-gradient-to-tr from-white/5 to-white/10 border border-white/10 shadow-[0_0_50px_rgba(79,70,229,0.5)]">
+                <div class="relative w-full h-full rounded-xl overflow-hidden bg-black flex items-center justify-center">
+                    <img id="lightbox-img" src="" class="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-lg relative z-[2]">
+                    <!-- Scanning line effect -->
+                    <div class="absolute inset-0 pointer-events-none w-full h-full bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent opacity-50 scanner-line z-[3]"></div>
+                </div>
+                <!-- Close btn -->
+                <button onclick="closeLightbox()" class="absolute -top-6 -right-6 w-12 h-12 bg-black/50 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors hover:shadow-[0_0_20px_rgba(255,255,255,0.8)] z-[10] group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:scale-90 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('cert-lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.add('lightbox-active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('cert-lightbox');
+            lightbox.classList.remove('lightbox-active');
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 700); 
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('cert-lightbox').classList.contains('lightbox-active')) {
+                closeLightbox();
+            }
+        });
     </script>
 </body>
 
